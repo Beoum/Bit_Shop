@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +20,8 @@ import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.product.ProductService;
 import com.model2.mvc.service.product.domain.Product;
+import com.model2.mvc.service.purchase.PurchaseService;
+import com.model2.mvc.service.purchase.domain.Purchase;
 
 @Controller
 public class ProductController {
@@ -115,5 +118,6 @@ public class ProductController {
 		return "forward:/product/listProduct.jsp";
 	}
 	
-//	@RequestMapping("/updateProductView.do")
+
+	
 }

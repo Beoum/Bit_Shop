@@ -25,7 +25,6 @@ import com.model2.mvc.service.user.UserService;
 @Controller
 public class PurchaseController {
 	
-	
 	private PurchaseService purchaseService;
 	private ProductService productService;
 	private UserService userService;
@@ -139,11 +138,70 @@ public class PurchaseController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
-		
-		
 		modelAndView.addObject("purchase", purchaseService.findPurchase(purchase.getTranNo()));
 		
 		modelAndView.setViewName("/purchase/getPurchase.jsp?tranNo=" + purchase.getTranNo());
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping("/updateTranCodeByProd.do")
+	public String updateTranCodeByProd(Search search, Purchase purchase, 
+										Model model, 
+										@RequestParam("menu") String menu,
+										Product product) throws Exception {
+		
+		System.out.println("Search : " + search);
+		System.out.println("Purchase : " + purchase);
+		
+		if(search.getSearchCondition() == null) {
+			search.setSearchCondition("0");
+		}
+		
+		if(search.getSearchKeyword() == null) {
+			search.setSearchKeyword("");
+		}
+		
+		purchase.setPurchaseProd(product);
+		
+		purchaseService.updateTranCode(purchase);
+		
+		search.setPageSize(pageSize);
+		// Business logic ผ๖วเ
+		Map<String , Object> map= productService.getProductList(search);
+
+		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
+		
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("resultPage", resultPage);
+		model.addAttribute("search", search);
+		model.addAttribute("menu", menu);
+		
+		return "forward:/product/listProduct.jsp";
+	}
+	
+	@RequestMapping("/updateTranCode.do")
+	public ModelAndView updateTranCode(Product product, Purchase purchase, Search search, HttpSession session) throws Exception {
+		
+		purchaseService.updateTranCode(purchase);
+		
+		if(search.getCurrentPage() ==0 ){
+			search.setCurrentPage(1);
+		}
+		
+		search.setPageSize(pageSize);
+		
+		Map<String, Object> map = purchaseService.getPurchaseList(search, ((User)session.getAttribute("user")).getUserId());
+		
+		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("list", map.get("list"));
+		modelAndView.addObject("resultPage", resultPage);
+		
+		modelAndView.setViewName("/purchase/listPurchase.jsp");
+		System.out.println("map : " + map);
+		System.out.println("resultPage : " + resultPage);
 		
 		return modelAndView;
 	}

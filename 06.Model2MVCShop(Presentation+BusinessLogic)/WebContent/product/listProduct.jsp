@@ -158,7 +158,7 @@
 				<c:if test="${param.menu == 'manage' }">
 					<c:choose>
 						<c:when test="${list[i].proTranCode.charAt(0) == '1'.charAt(0) }">
-							구매완료<a href="/updateTranCodeByProd.do?prodNo=${list[i].prodNo }&tranCode=2">배송하기</a>
+							구매완료<a href="/updateTranCodeByProd.do?prodNo=${list[i].prodNo }&tranCode=2&currentPage=${resultPage.currentPage}&searchKeyword=${param.searchKeyword}&menu=${param.menu}">배송하기</a>
 						</c:when>
 						<c:when test="${list[i].proTranCode.charAt(0) == '2'.charAt(0) }">배송중</c:when>
 						<c:when test="${list[i].proTranCode.charAt(0) == '3'.charAt(0) }">배송완료</c:when>

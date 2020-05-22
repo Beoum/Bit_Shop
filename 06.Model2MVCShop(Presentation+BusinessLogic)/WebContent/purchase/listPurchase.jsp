@@ -84,7 +84,7 @@
 			<c:choose>
 				<c:when test="${list[i].tranCode.charAt(0)=='3'.charAt(0) }"/>
 				<c:when test="${list[i].tranCode.charAt(0)=='2'.charAt(0) }">
-					<a href="/updateTranCode.do?tranNo=${list[i].tranNo }&tranCode=3">물건도착</a>
+					<a href="/updateTranCode.do?tranNo=${list[i].tranNo }&tranCode=3&currentPage=${resultPage.currentPage }">물건도착</a>
 				</c:when>
 			</c:choose>
 			</td>
