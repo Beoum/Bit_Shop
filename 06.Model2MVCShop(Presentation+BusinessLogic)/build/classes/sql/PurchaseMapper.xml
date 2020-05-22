@@ -97,37 +97,41 @@
 	 	</if>
 	 </update>
 
-<select  id="getTotalCount"  parameterType="search"	 resultType="int">
-	  	SELECT COUNT(*)
-	  	FROM(	SELECT *
-						FROM transaction
-						<if test="searchCondition != null">
-							<where>
-								<if test="searchCondition == 0 and searchKeyword !='' ">
-						 			user_id = #{searchKeyword}
-								</if>
-								<if test="searchCondition == 1 and searchKeyword !='' ">
-						 		user_name = #{searchKeyword}
-								</if>
-							</where>
-						</if> ) countTable						
+	<select  id="getTotalCount"  parameterType="search"	 resultType="int">
+	  	SELECT	COUNT(*)
+	  	FROM(	SELECT	*
+	  			FROM transaction
+				<if test="searchCondition != null">
+					<where>
+						<if test="searchCondition == 0 and searchKeyword !='' ">
+				 			user_id = #{searchKeyword}
+						</if>
+						<if test="searchCondition == 1 and searchKeyword !='' ">
+				 		user_name = #{searchKeyword}
+						</if>
+					</where>
+				</if> ) countTable						
 	 </select>	 
 	 	 
 	<!-- SQL : SELECT LIST -->
 	<select  id="getPurchaseList"  parameterType="hashMap"	resultMap="PurchaseSelectMap">
-	  	SELECT *
-	  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
-	  					FROM		(	
-	  									SELECT 
-	  										transaction.*, 
-	  										product.prod_name
-	  									FROM 
-	  										transaction, 
-	  										product 
-	  									WHERE 
-	  										BUYER_ID= #{userId} AND product.prod_no=transaction.prod_no ) inner_table
-						WHERE ROWNUM &lt;= #{search.endRowNum} )
-		WHERE row_seq BETWEEN #{search.startRowNum} AND #{search.endRowNum} 
+	  	SELECT	*
+	  	FROM	( 
+	  				SELECT	inner_table.* 
+	  					,	ROWNUM AS row_seq
+	  				FROM	(	
+	  							SELECT	transaction.*
+	  								,	product.prod_name
+	  							FROM	transaction
+	  								,	product 
+	  							WHERE	BUYER_ID= #{userId} 
+	  								AND product.prod_no=transaction.prod_no 
+	  						)	inner_table
+					WHERE ROWNUM &lt;= #{search.endRowNum} 
+				)
+		WHERE	row_seq 
+		BETWEEN #{search.startRowNum} 
+			AND #{search.endRowNum} 
 	 </select>
 	 
 </mapper>

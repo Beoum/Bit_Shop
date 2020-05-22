@@ -57,39 +57,46 @@
 		 
 	<!-- SQL : SELECT LIST -->
 	<select  id="getProductList"  parameterType="search" resultType="product">								
-		SELECT * 
-		FROM (SELECT inner_table. * , ROWNUM AS row_seq  
-						FROM (	SELECT p.IMAGE_FILE AS fileName, 
-										p.REG_DATE  AS regDate,
-										p.price,
-										p.PROD_DETAIL,
-										p.prod_no AS prodNo,		
-										p.prod_name AS prodName,						
-										t.TRAN_STATUS_CODE AS proTranCode
-									FROM transaction t, product p 											
-											<if test="searchCondition != null">
-												<where>
-													<if test="searchCondition == 0 and searchKeyword !='' ">
-														 p.prod_no(+) = #{searchKeyword}
-													</if> 
-													<if test="searchCondition == 1 and searchKeyword !='' ">
-										 				 p.prod_name(+) LIKE '%'|| #{searchKeyword} ||'%'
-													</if>
-													<if test="searchCondition == 2 and searchKeyword !='' ">
-										 				 p.price=(+) = #{searchKeyword}
-													</if>
- 													 AND t.prod_no(+)=p.prod_no
-												</where>
-<!-- 												<if test="orderBy != ''"> 
- 													ORDER BY price ${orderBy}
- 												</if> 
- 												<if test="orderBy == ''"> 
- 													ORDER BY p.prod_no 
- 												</if> -->
-											</if>
-											) inner_table 
-						WHERE ROWNUM &lt;= #{endRowNum} )
-		WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
+		SELECT	* 
+		FROM(	
+				SELECT 	inner_table. * 
+					, 	ROWNUM AS row_seq  
+				FROM (
+						SELECT	p.IMAGE_FILE AS fileName
+							,	p.REG_DATE  AS regDate
+							,	p.price
+							,	p.PROD_DETAIL
+							,	p.prod_no AS prodNo
+							,	p.prod_name AS prodName
+							,	t.TRAN_STATUS_CODE AS proTranCode
+						FROM 	transaction t
+							, 	product p 											
+						<if test="searchCondition != null">
+							<where>
+								<if test="searchCondition == 0 and searchKeyword !='' ">
+									 p.prod_no(+) = #{searchKeyword}
+								</if> 
+								<if test="searchCondition == 1 and searchKeyword !='' ">
+					 				 p.prod_name(+) LIKE '%'|| #{searchKeyword} ||'%'
+								</if>
+								<if test="searchCondition == 2 and searchKeyword !='' ">
+					 				 p.price=(+) = #{searchKeyword}
+								</if>
+									 AND t.prod_no(+)=p.prod_no
+							</where>
+ 						<if test="orderBy != ''"> 
+								ORDER BY price ${orderBy}
+							</if> 
+							<if test="orderBy == ''"> 
+								ORDER BY p.prod_no 
+							</if>
+						</if>
+						) inner_table 
+						WHERE ROWNUM &lt;= #{endRowNum} 
+						)
+		WHERE	row_seq 
+		BETWEEN #{startRowNum} 
+			AND #{endRowNum} 
 	 </select>
 	 	<!--  위 두번째 subQuery 의  
 	 			WHERE ROWNUM &lt;= #{endRowNum} ) 는

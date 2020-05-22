@@ -97,11 +97,11 @@
 			<div float:right>
 			<c:if test="${empty param.searchKeyword}">
 				<u><a href="/listProduct.do?orderBy=DESC&menu=${param.menu }">가격높은순</a></u>
-				<u><a href="/listProduct.do?orderBy=ASC&menu=${param.menu }&">가격낮은순</a></u></div>
+				<u><a href="/listProduct.do?orderBy=ASC&menu=${param.menu }">가격낮은순</a></u></div>
 			</c:if>	
 			<c:if test="${!empty param.searchKeyword}">
-				<u><a href="/listProduct.do?orderBy=DESC&menu=${param.menu }&searchKeyword=${param.searchKeyword}&searchCondition=${searchVO.searchCondition}">가격높은순</a></u>
-				<u><a href="/listProduct.do?orderBy=ASC&menu=${param.menu }&searchKeyword=${param.searchKeyword}&searchCondition=${searchVO.searchCondition}">가격낮은순</a></u>
+				<u><a href="/listProduct.do?orderBy=DESC&menu=${param.menu }&searchKeyword=${param.searchKeyword}&searchCondition=${search.searchCondition}">가격높은순</a></u>
+				<u><a href="/listProduct.do?orderBy=ASC&menu=${param.menu }&searchKeyword=${param.searchKeyword}&searchCondition=${search.searchCondition}">가격낮은순</a></u>
 			</c:if>	
 			<c:if test="${!empty param.menu }">
 				<input type="hidden" name="orderBy" value="${param.orderBy }"/>

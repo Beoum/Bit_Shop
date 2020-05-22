@@ -37,7 +37,7 @@ public class ProductDAOImpl implements ProductDAO {
 		sqlSession.update("ProductMapper.updateProduct", product);
 	}
 	
-	// 호출하는 method return type list로 수정하세요.
+
 	public List<Product> getProductList(Search search) throws Exception {
 		return sqlSession.selectList("ProductMapper.getProductList", search);
 	}
