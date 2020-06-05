@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans 	xmlns="http://www.springframework.org/schema/beans"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xmlns:context = "http://www.springframework.org/schema/context"
+				xmlns:util="http://www.springframework.org/schema/util"
+				xsi:schemaLocation="http://www.springframework.org/schema/beans
+									http://www.springframework.org/schema/beans/spring-beans.xsd
+									http://www.springframework.org/schema/context
+									http://www.springframework.org/schema/context/spring-context.xsd
+									http://www.springframework.org/schema/util
+									http://www.springframework.org/schema/util/spring-util.xsd">					 
+		
+		<util:properties id="userProperties" location="classpath:config/userservice03.properties"/>
+
+		<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="location" value="config/userservice02.properties"/>
+		</bean>
+		
+		<bean id="user08" class="spring.service.domain.User">
+			<property name="age" value="${user.age}"/>
+			<property name="userId" value="${user.userId}"/>
+			<property name="password" value="${user.password}"/>
+		</bean>
+		
+		<bean id="user09" class="spring.service.domain.User">
+			<property name="age" value="#{userProperties['user.age']}"/>
+			<property name="userId" value="#{userProperties['user.userId']}"/>
+			<property name="password" value="#{userProperties['user.password']}"/>
+		</bean>
+		
+		<bean id="user10" class="spring.service.domain.User">
+			<property name="age" value="100"/>
+			<property name="userId" value="100유저"/>
+			<property name="password" value="100100"/>
+		</bean> 
+		
+		<bean id="user11" class="spring.service.domain.User">
+			<property name="age" value="#{user10.age}"/>
+			<property name="userId" value="#{user10.userId}"/>
+			<property name="password" value="#{user10.password}"/>
+		</bean>
+		
+		<bean id="client" class="spring.service.domain.Client"/>
+		
+		<bean id="user12" class="spring.service.domain.User">
+			<property name="age" value="#{client.age}"/>
+			<property name="userId" value="#{client.info[0]}"/>
+			<property name="password" value="#{client.info[1]}"/>
+		</bean>
+</beans>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans 	xmlns="http://www.springframework.org/schema/beans"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:schemaLocation="http://www.springframework.org/schema/beans
+													  http://www.springframework.org/schema/beans/spring-beans.xsd">												 
+		
+		<bean id="user06" class="spring.service.domain.User">
+			<constructor-arg value="60" />
+			<constructor-arg value="06유저" />
+			<constructor-arg value="6060"/>
+		</bean>
+		
+		<bean id="user07" class="spring.service.domain.User">
+			<constructor-arg value="70유저" type="java.lang.String"/>
+			<constructor-arg value="70" type="int" />
+			<constructor-arg ref="password" index="1"/>
+		</bean>
+
+		<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="location" value="config/userservice02.properties"/>
+		</bean>
+		
+		<bean id="user08" class="spring.service.domain.User">
+			<property name="age" value="${user.age}"/>
+			<property name="userId" value="${user.userId}"/>
+			<property name="password" value="${user.password}"/>
+		</bean>
+</beans>

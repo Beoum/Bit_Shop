@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ProductMapper">
+ 	
+	<resultMap id="productSelectMap" type="product">
+		<result property="fileName" 			column="IMAGE_FILE" 			jdbcType="VARCHAR"/>
+		<result property="manuDate"	column="MANUFACTURE_DAY" 		jdbcType="VARCHAR" />
+		<result property="price" 	column="price" 		jdbcType="VARCHAR" /> <!-- numeric 아닌지? -->
+		<result property="prodDetail" 				column="PROD_DETAIL" 					jdbcType="VARCHAR" />
+		<result property="prodName" 				column="prod_name" 					jdbcType="VARCHAR" />
+		<result property="prodNo" 			column="PROD_NO" 		jdbcType="NUMERIC" />
+		<result property="regDate" 				column="REG_DATE" 					jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- SQL : INSERT -->
+	<insert 	id="addProduct"		parameterType="product" >
+	 	INSERT INTO 
+	 		product 
+	 	VALUES(
+		 		seq_product_prod_no.nextval,
+		 		#{prodName},
+		 		#{prodDetail},
+		 		#{manuDate},
+		 		#{price},
+		 		#{fileName},
+		 		sysdate
+	 		)
+	 </insert>
+	 
+	 <!-- SQL : SELECT ONE -->
+	 <select id="getProduct"	parameterType="int"	resultMap="productSelectMap">
+		select 
+				p.*, 
+				t.tran_status_code State 
+		from 
+				PRODUCT p, 
+				transaction t 
+		where 
+				p.prod_no=#{prodNo} AND 
+				t.prod_no(+)=p.prod_no
+	 </select>
+	 
+	 <!-- SQL : UPDATE -->
+	 <update	id="updateProduct"	parameterType="product" >
+	   	UPDATE product
+	   	<set>
+	   		IMAGE_FILE = #{fileName} ,
+			MANUFACTURE_DAY	= #{manuDate},
+			PRICE = #{price} ,
+			PROD_DETAIL	= #{prodDetail},
+			PROD_NAME = #{prodName}
+	   	</set>
+	   	WHERE PROD_NO = #{prodNo}
+	 </update>
+		 
+	<!-- SQL : SELECT LIST -->
+	<select  id="getProductList"  parameterType="search" resultType="product">								
+		SELECT * 
+		FROM (SELECT inner_table. * , ROWNUM AS row_seq  
+						FROM (	SELECT p.IMAGE_FILE AS fileName, 
+										p.MANUFACTURE_DAY  AS manuDate,
+										p.price,
+										p.PROD_DETAIL,
+										p.prod_no,		
+										p.prod_name,						
+										t.TRAN_STATUS_CODE AS proTranCode
+									FROM transaction t, product p 											
+											<if test="searchCondition != null">
+												<where>
+													<if test="searchCondition == 0 and searchKeyword !='' ">
+														 p.prod_no(+) = #{searchKeyword}
+													</if> 
+													<if test="searchCondition == 1 and searchKeyword !='' ">
+										 				 p.prod_name(+) LIKE '%'|| #{searchKeyword} ||'%'
+													</if>
+													<if test="searchCondition == 2 and searchKeyword !='' ">
+										 				 p.price=(+) = #{searchKeyword}
+													</if>
+													 AND t.prod_no(+)=p.prod_no
+												</where>
+												<if test="orderBy != ''">
+													ORDER BY price ${orderBy} ) inner_table
+												</if>
+												<if test="orderBy == ''">
+													ORDER BY p.prod_no ) inner_table
+												</if>
+											</if>
+						WHERE ROWNUM &lt;= #{endRowNum} )
+		WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
+	 </select>
+	 	<!--  위 두번째 subQuery 의  
+	 			WHERE ROWNUM &lt;= #{endRowNum} ) 는
+	 			WHERE ROWNUM <= #{endRowNum} ) 의미이며..
+	 			< 는 keyword 로 &lt; 를	사용.
+	 			
+	 			<![CDATA[  ~~~  ]]> 를 이용하여 아래와 같이 사용  할 수 있다.
+	 			CDATA ==> Character Data 의 의미 Java 에서 \n 같은 특수문자 처리  
+
+				WHERE ROWNUM <![CDATA[ <=]]> #{endRowNum} )
+		-->
+	
+	<!-- SQL : SELECT ROW Count -->	 
+	 <select  id="getTotalCount"  parameterType="search"	 resultType="int">
+	  	SELECT COUNT(*)
+	  	FROM(	SELECT *
+						FROM transaction t, product p 	
+						<if test="searchCondition != null">
+							<where>
+								<if test="searchCondition == 0 and searchKeyword !='' ">
+									 p.prod_no(+) = #{searchKeyword}
+								</if> 
+								<if test="searchCondition == 1 and searchKeyword !='' ">
+					 				 p.prod_name(+) LIKE '%'|| #{searchKeyword} ||'%'
+								</if>
+								<if test="searchCondition == 2 and searchKeyword !='' ">
+					 				 p.price=(+) = #{searchKeyword}
+								</if>
+								 AND t.prod_no(+)=p.prod_no
+							</where>
+						</if> ) countTable						
+	 </select>
+	 
+</mapper>
