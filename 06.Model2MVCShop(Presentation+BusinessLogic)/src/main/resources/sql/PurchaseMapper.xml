@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="PurchaseMapper">
+ 	
+ 	
+	<resultMap id="PurchaseSelectMap" type="purchase">
+		<result property="tranNo" 	column="TRAN_NO" jdbcType="NUMERIC" />
+		<result property="paymentOption" column="PAYMENT_OPTION" jdbcType="VARCHAR" />
+		<result property="receiverName" column="RECEIVER_NAME" jdbcType="VARCHAR" />
+		<result property="receiverPhone" column="RECEIVER_PHONE" jdbcType="VARCHAR" />
+		<result property="divyAddr" column="DEMAILADDR" jdbcType="VARCHAR" />
+		<result property="divyRequest" column="DLVY_REQUEST" jdbcType="VARCHAR"  />
+		<result property="tranCode" column="TRAN_STATUS_CODE" jdbcType="VARCHAR" />
+		<result property="orderDate" column="ORDER_DATA" jdbcType="DATE" />
+		<result property="divyDate" column="DLVY_DATE" jdbcType="VARCHAR" />
+
+		<association property="buyer" select="select" column="BUYER_Id"/>
+		<association property="purchaseProd" select="select1" column="PROD_NO"/>	
+	</resultMap>
+	
+	<select id="select" resultMap="userSelect" parameterType="string">
+		SELECT	*
+		FROM	users
+		WHERE	USER_ID=#{value}
+	</select>
+
+	
+	<resultMap id="userSelect" type="user">
+		<result property="userId" column="user_id" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<select id="select1" resultMap="prodcutMap" parameterType="int">
+		SELECT	*
+		FROM	product
+		WHERE	prod_no=#{value}
+	</select>
+	
+	<resultMap type="product" id="prodcutMap">
+		<result property="prodNo" column="prod_no" jdbcType="NUMERIC"/>
+		<result property="prodName" column="prod_name" jdbcType="VARCHAR"/>
+	</resultMap>
+
+	
+	<!-- SQL : INSERT -->
+	<insert 	id="addPurchase" parameterType="hashMap" >
+		INSERT 
+		INTO	transaction 			
+		VALUES(
+				seq_transaction_tran_no.NEXTVAL
+			, 	#{prodNo}
+			, 	#{userId}
+			, 	#{purchase.paymentOption}
+			, 	#{purchase.receiverName}
+			, 	#{purchase.receiverPhone}
+			, 	#{purchase.divyAddr}
+			, 	#{purchase.divyRequest}
+			, 	1
+			, 	sysdate
+			, 	#{purchase.divyDate}
+			)	
+	</insert>
+	
+	<select id="getPurchase" parameterType="int" resultMap="PurchaseSelectMap">
+		SELECT	*
+		FROM	transaction 
+		WHERE	tran_no=#{tranNo}
+	</select>
+	 
+	<update id="updatePurchase" parameterType="purchase">
+		UPDATE	transaction 
+		SET		payment_option=#{paymentOption}
+			,	receiver_name=#{receiverName}
+			, 	receiver_phone=#{receiverPhone}
+			, 	DEMAILADDR=#{divyAddr}
+			, 	DLVY_REQUEST=#{divyRequest}
+			<if test="divyDate != null and divyDate !='' ">
+			, 	DLVY_DATE=TO_DATE(#{divyDate}, 'yyyy/MM/DD')
+			</if> 
+		WHERE	tran_no=#{tranNo}
+	</update>
+	 
+	 <update id="updateTranCode" parameterType="hashMap">
+	 	UPDATE	transaction
+	 	<set>
+				TRAN_STATUS_CODE=#{purchase.tranCode}
+	 	</set>
+	 	WHERE 
+	 	<if test="!prodNo.equals('')">
+	 		prod_no=#{prodNo}
+	 	</if>
+	 	<if test="prodNo.equals('')">
+	 		tran_no=#{purchase.tranNo}
+	 	</if>
+	 </update>
+
+	<select  id="getTotalCount"  parameterType="search"	 resultType="int">
+	  	SELECT	COUNT(*)
+	  	FROM(	SELECT	*
+	  			FROM transaction
+				<if test="searchCondition != null">
+					<where>
+						<if test="searchCondition == 0 and searchKeyword !='' ">
+				 			user_id = #{searchKeyword}
+						</if>
+						<if test="searchCondition == 1 and searchKeyword !='' ">
+				 		user_name = #{searchKeyword}
+						</if>
+					</where>
+				</if> ) countTable						
+	 </select>	 
+	 	 
+	<!-- SQL : SELECT LIST -->
+	<select  id="getPurchaseList"  parameterType="hashMap"	resultMap="PurchaseSelectMap">
+	  	SELECT	*
+	  	FROM	( 
+	  				SELECT	inner_table.* 
+	  					,	ROWNUM AS row_seq
+	  				FROM	(	
+	  							SELECT	transaction.*
+	  								,	product.prod_name
+	  							FROM	transaction
+	  								,	product 
+	  							WHERE	BUYER_ID= #{userId} 
+	  								AND product.prod_no=transaction.prod_no 
+	  						)	inner_table
+					WHERE ROWNUM &lt;= #{search.endRowNum} 
+				)
+		WHERE	row_seq 
+		BETWEEN #{search.startRowNum} 
+			AND #{search.endRowNum} 
+	 </select>
+	 
+</mapper>
