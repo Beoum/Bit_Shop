@@ -14,7 +14,6 @@ import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.user.UserService;
 
 
-//==> 회원관리 RestController
 @RestController
 @RequestMapping("/user/*")
 public class UserRestController {
@@ -23,7 +22,6 @@ public class UserRestController {
 	@Autowired
 	@Qualifier("userServiceImpl")
 	private UserService userService;
-	//setter Method 구현 않음
 		
 	public UserRestController(){
 		System.out.println(this.getClass());

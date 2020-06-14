@@ -30,8 +30,10 @@ public class CategoryServiceImpl implements CategoryService {
 		List<Category> list = new ArrayList<Category>();
 		Category categoryList = CategoryDAO.getCategoryHierarchy(category.getCategoryId());
 		list.add(categoryList);
+		
+		// 부모 카테고리를 가져오는 while문 최상위(depth == 1)가 되면 중단.
 		while(true) {
-			categoryList = CategoryDAO.getCategoryHierarchy(categoryList.getCategoryId()-1);
+			categoryList = CategoryDAO.getCategoryHierarchy(categoryList.getParentsId());
 			list.add(categoryList);
 			if(categoryList.getDepth() == 1) {
 				break;

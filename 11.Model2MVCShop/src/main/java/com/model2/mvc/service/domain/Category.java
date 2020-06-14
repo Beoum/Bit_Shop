@@ -2,10 +2,10 @@ package com.model2.mvc.service.domain;
 
 public class Category {
 	
-	private String name;
-	private int parentsId;
-	private int categoryId;
-	private int depth;
+	private String name; // 카테고리 이름
+	private int parentsId; // 부모 카테고리의 아이디
+	private int categoryId; // 카테고리의 아이디
+	private int depth; // 카테고리의 깊이
 	
 	public String getName() {
 		return name;

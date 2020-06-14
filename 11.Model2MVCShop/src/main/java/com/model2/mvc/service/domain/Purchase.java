@@ -8,17 +8,17 @@ import com.model2.mvc.service.domain.User;
 
 public class Purchase {
 	
-	private User buyer;
-	private String divyAddr;
-	private String divyDate;
-	private String divyRequest;
-	private Date orderDate;
-	private String paymentOption;
-	private Product purchaseProd;
-	private String receiverName;
-	private String receiverPhone;
-	private String tranCode;
-	private int tranNo;
+	private User buyer; // 구매자 정보
+	private String divyAddr; // 배송지
+	private String divyDate; // 배송희망날짜
+	private String divyRequest; // 배송시 요청사항
+	private Date orderDate; // 주문일자
+	private String paymentOption; // 결제방법
+	private Product purchaseProd; // 상품정보
+	private String receiverName; // 받는 사람이름
+	private String receiverPhone; // 받는 사람 전화번호
+	private String tranCode; // 상품 상태 코드
+	private int tranNo; // 상품 구매내역 고유 번호
 	
 	public Purchase(){
 	}

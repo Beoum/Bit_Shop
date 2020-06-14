@@ -35,25 +35,25 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public void addProduct(Product product, MultipartHttpServletRequest mpRequest) throws Exception {
-		// file upload 처리, 나중에 경로명이랑 파일이름이랑 동시에 넣어주세요.
+		// server에 file upload
 		String fileName = uploadFile(mpRequest);
 		
-		// 날짜 형식 및 fileName setting
-//		Product date = new Product();
-//		date.setManuDate(product.getManuDate().substring(0, 4)+product.getManuDate().substring(5, 7)+product.getManuDate().substring(8));
-//		product.setManuDate(date.getManuDate());
+		// hash처리된 fileName을 setting
 		product.setFileName(fileName);
 		
-		//insert 작업진행
 		productDAO.insertProduct(product);
 	}
 
 	@Override
 	public Product getProduct(int prodNo) throws Exception {
 		Product product = productDAO.findProduct(prodNo);
+		
+		// 제품 상태코드가 null이면 0으로 setting
 		if(product.getProTranCode() == null) {
 			product.setProTranCode("0");
 		}
+		
+		// 상품의 이미지가 존재하면 경로를 setting
 		if(product.getFileName() != null) {
 			product.setFileName("/images/uploadFiles/"+product.getFileName());
 		}
@@ -65,6 +65,8 @@ public class ProductServiceImpl implements ProductService {
 	public Map<String, Object> getProductList(Search search) throws Exception {
 		List<Product> list = new ArrayList<Product>();
 		int totalCount = 0;
+		
+		// 관리자 페이지에서 리스트를 요청했을때 상품 리스트
 		if(search.getMenu().equals("manage")) {
 			list = productDAO.getProductList(search);
 			totalCount = productDAO.getTotalCount(search);
@@ -72,8 +74,8 @@ public class ProductServiceImpl implements ProductService {
 			list = productDAO.getProductListSearch(search);
 			totalCount = productDAO.getTotalCountSearch(search);
 		}
-				
-
+		
+		// 제품리스트를 볼때에 상태를 표시하기위해 상태코드를 셋팅
 		for(int i = 0; i < list.size() ; i++) {
 			if(list.get(i).getProTranCode() == null) {
 				list.get(i).setProTranCode("0");
@@ -86,30 +88,26 @@ public class ProductServiceImpl implements ProductService {
 		
 		return map;
 	}
-
+	
+	// 상품정보 업데이트
 	@Override
 	public void updateProduct(Product productVO) throws Exception {
 		productDAO.updateProduct(productVO);
 	}
 
+	// 상품의 전체 갯수를 조회하는 메소드
 	@Override
 	public int getTotalCount(Search search) throws Exception {
-		if(search.getCurrentPage() == 0) {
-			search.setCurrentPage(1);
-		}
-
-		search.setPageSize(3);
 		return productDAO.getTotalCount(search);
 	}
 
+	// file upload
 	@Override
 	public String uploadFile(MultipartHttpServletRequest mpRequest) throws Exception {
-		// 메타 데이터화 해서 바꾸든지하세요. 경로를 Server 컴퓨터말고 표준화된 폴더 구조 안으로 넣어야하는건 아닌지?
-		String filePath = "";
 		String root_path = mpRequest.getSession().getServletContext().getRealPath("/");  
 	    String attach_path = "/images/uploadFiles/";
 	      
-	    filePath = root_path + attach_path;
+	    String filePath = root_path + attach_path;
         MultipartFile file = mpRequest.getFile("imgFile");
         String fileName = "";
         if(file!=null){
@@ -118,10 +116,9 @@ public class ProductServiceImpl implements ProductService {
     	}
         
 		return fileName;
-        
-		
 	}
-
+	
+	// fileName을 hash
 	@Override
 	public String saveFileName(String originFileName) {
 		String fileName = "";

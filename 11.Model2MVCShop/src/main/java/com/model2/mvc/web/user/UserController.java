@@ -21,12 +21,10 @@ import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.user.UserService;
 
 
-//==> 회원관리 Controller
 @Controller
 @RequestMapping("/user/*")
 public class UserController {
 	
-	///Field
 	@Autowired
 	@Qualifier("userServiceImpl")
 	private UserService userService;

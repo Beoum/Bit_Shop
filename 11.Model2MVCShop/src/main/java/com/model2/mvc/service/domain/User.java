@@ -2,32 +2,24 @@ package com.model2.mvc.service.domain;
 
 import java.sql.Date;
 
-
-//==>회원정보를 모델링(추상화/캡슐화)한 Bean
 public class User {
 	
-	///Field
-	private String userId;
-	private String userName;
-	private String password;
-	private String role;
-	private String ssn;
-	private String phone;
-	private String addr;
-	private String email;
-	private Date regDate;
-	/////////////// EL 적용 위해 추가된 Field ///////////
+	private String userId; // 유저의 아아디
+	private String userName; // 유저의 이름
+	private String password; // 유저의 비밀번호
+	private String role; 
+	private String ssn; // 유저의 주민등록번호
+	private String phone; // 유저의 전화번호
+	private String addr; // 유저의 주소
+	private String email; // 유저의 이메일
+	private Date regDate; // 유저의 회원가입 일자
 	private String phone1;
 	private String phone2;
 	private String phone3;
-
 	
-	
-	///Constructor
 	public User(){
 	}
 	
-	///Method 
 	public String getUserId() {
 		return userId;
 	}
@@ -88,7 +80,6 @@ public class User {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	/////////////// EL 적용 위해 추가된 getter Method ///////////
 	public String getPhone1() {
 		return phone1;
 	}
@@ -105,9 +96,6 @@ public class User {
 			+" [ssn] "+ssn+" [phone] "+phone+" [email] "+email+" [regDate] "+regDate;
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////////////
-	// JSON ==> Domain Object  Binding을 위해 추가된 부분
-	// POJO 의 중요성
 	public void setPhone1(String phone1) {
 		this.phone1 = phone1;
 	}
@@ -119,5 +107,4 @@ public class User {
 	public void setPhone3(String phone3) {
 		this.phone3 = phone3;
 	}
-	/////////////////////////////////////////////////////////////////////////////////////////
 }

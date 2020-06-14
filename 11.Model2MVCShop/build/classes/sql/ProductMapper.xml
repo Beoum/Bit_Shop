@@ -198,7 +198,8 @@
 	<!-- SQL : SELECT ROW Count -->	 
 	 <select  id="getTotalCount"  parameterType="search"	 resultType="int">
 	  	SELECT COUNT(*)
-	  	FROM(	SELECT *
+	  	FROM(	
+	  			SELECT *
 						FROM transaction t, product p 	
 						<if test="searchCondition != null">
 							<where>

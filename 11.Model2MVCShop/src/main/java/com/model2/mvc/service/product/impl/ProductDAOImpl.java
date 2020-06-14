@@ -26,40 +26,39 @@ public class ProductDAOImpl implements ProductDAO {
 		this.sqlSession=sqlSession;
 	}
 	
+	// 신규 제품 등록
 	public void insertProduct(Product product) throws Exception {
 		sqlSession.insert("ProductMapper.addProduct", product);
 	}
 
+	// 제품 상세정보 조회
 	public Product findProduct(int prodNo) throws Exception {
 		return sqlSession.selectOne("ProductMapper.getProduct", prodNo);
 	}
 
+	// 제품 정보 업데이트
 	public void updateProduct(Product product) throws Exception {
 		sqlSession.update("ProductMapper.updateProduct", product);
 	}
 	
-
+	// 관리자 페이지에서 조회하는 제품 리스트
 	public List<Product> getProductList(Search search) throws Exception {
 		return sqlSession.selectList("ProductMapper.getProductList", search);
 	}
 
-
-	
-	// 게시판 currentPage Row 만  return 
-	private String makeCurrentPageSql(String sql , Search search){
-		return null;
-	}
-
+	// 관리자 페이지에서 조회한 제품의 총 숫자
 	@Override
 	public int getTotalCount(Search search) throws Exception {
 		return sqlSession.selectOne("ProductMapper.getTotalCount", search);
 	}
 
+	// 제품 검색 페이지에서 조회하는 제품 리스트
 	@Override
 	public List<Product> getProductListSearch(Search search) throws Exception {
 		return sqlSession.selectList("ProductMapper.getProductListSearch", search);
 	}
 
+	// 제품 검색 페이지에서 조회한 제품의 총 숫자
 	@Override
 	public int getTotalCountSearch(Search search) throws Exception {
 		return sqlSession.selectOne("ProductMapper.getTotalCountSearch", search);

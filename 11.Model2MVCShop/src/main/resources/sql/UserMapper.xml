@@ -19,53 +19,85 @@
 		<result property="regDate" 		column="reg_date" 			jdbcType="DATE" />
 	</resultMap>
 	
-	<!-- SQL : INSERT -->
-	<insert 	id="addUser"		parameterType="user" >
+	<insert id="addUser"		parameterType="user" >
 	 	INSERT
-		INTO users( user_id , user_name , password , role , ssn, cell_phone, addr, email , reg_date) 
-		VALUES	 (	#{userId} , #{userName} , #{password} , 'user' , #{ssn:VARCHAR} , 
-							#{phone:VARCHAR} , #{addr:VARCHAR} , #{email:VARCHAR} , SYSDATE )
+		INTO 	users( 
+						user_id 
+					, 	user_name 
+					, 	password 
+					, 	role 
+					, 	ssn
+					, 	cell_phone
+					, 	addr
+					, 	email 
+					, reg_date
+					) 
+		VALUES(	
+				#{userId} 
+			, 	#{userName} 
+			, 	#{password} 
+			, 	'user' 
+			, 	#{ssn:VARCHAR} 
+			, 	#{phone:VARCHAR} 
+			, 	#{addr:VARCHAR} 
+			, 	#{email:VARCHAR} 
+			, 	SYSDATE 
+			)
 	 </insert>
 	 
-	 <!-- SQL : SELECT ONE -->
-	 <select 	id="getUser"	parameterType="string"	resultMap="userSelectMap">
-		SELECT
-		user_id , user_name , password , role ,  cell_phone ,  addr , email , reg_date 		
-		FROM users 
-		WHERE user_id = #{value}
+	 <select id="getUser"	parameterType="string"	resultMap="userSelectMap">
+		SELECT	user_id 
+			, 	user_name 
+			, 	password 
+			, 	role 
+			,  	cell_phone 
+			,  	addr 
+			, 	email 
+			, 	reg_date 		
+		FROM 	users 
+		WHERE 	user_id = #{value}
 	 </select>
 	 
-	 <!-- SQL : UPDATE -->
-	 <update	id="updateUser"	parameterType="user" >
-	   	UPDATE users
+	 <update id="updateUser"	parameterType="user" >
+	   	UPDATE	users
 	   	<set>
-	   		user_name 	= #{userName} ,
-			cell_phone	= #{phone},
-			addr 				= #{addr} ,
-			email				=	#{email}
+	   			user_name = #{userName} 
+	   		,	cell_phone = #{phone}
+	   		,	addr = #{addr} 
+	   		,	email =	#{email}
 	   	</set>
 	   	WHERE user_id = #{userId}
 	 </update>
 		 
 	<!-- SQL : SELECT LIST -->
-	<select  id="getUserList"  parameterType="search"	resultMap="userSelectMap">
+	<select id="getUserList"  parameterType="search"	resultMap="userSelectMap">
 	  	SELECT *
-	  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
-	  					FROM		(	SELECT user_id , user_name , email
-											FROM users
-											<if test="searchCondition != null">
-												<where>
-													<if test="searchCondition == 0 and searchKeyword !='' ">
-										 				user_id = #{searchKeyword}
-													</if>
-													<if test="searchCondition == 1 and searchKeyword !='' ">
-										 				user_name = #{searchKeyword}
-													</if>
-												</where>
-											</if>
-											ORDER BY user_id ) inner_table
-						WHERE ROWNUM &lt;= #{endRowNum} )
-		WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
+	  	FROM (	
+	  			SELECT 	inner_table.* 
+	  				, 	ROWNUM AS row_seq
+	  			FROM(	
+	  					SELECT user_id 
+	  						, 	user_name 
+	  						, 	email
+						FROM users
+						<if test="searchCondition != null">
+							<where>
+								<if test="searchCondition == 0 and searchKeyword !='' ">
+					 				user_id = #{searchKeyword}
+								</if>
+								<if test="searchCondition == 1 and searchKeyword !='' ">
+					 				user_name = #{searchKeyword}
+								</if>
+							</where>
+						</if>
+						ORDER 
+							BY 	user_id 
+						) inner_table
+				WHERE ROWNUM &lt; = #{endRowNum} 
+			)
+		WHERE 	row_seq 
+			BETWEEN #{startRowNum} 
+				AND #{endRowNum} 
 	 </select>
 	 	<!--  위 두번째 subQuery 의  
 	 			WHERE ROWNUM &lt;= #{endRowNum} ) 는
@@ -79,20 +111,23 @@
 		-->
 	
 	<!-- SQL : SELECT ROW Count -->	 
-	 <select  id="getTotalCount"  parameterType="search"	 resultType="int">
-	  	SELECT COUNT(*)
-	  	FROM(	SELECT user_id , user_name , email
-						FROM users
-						<if test="searchCondition != null">
-							<where>
-								<if test="searchCondition == 0 and searchKeyword !='' ">
-						 			user_id = #{searchKeyword}
-								</if>
-								<if test="searchCondition == 1 and searchKeyword !='' ">
-						 		user_name = #{searchKeyword}
-								</if>
-							</where>
-						</if> ) countTable						
+	 <select id="getTotalCount"  parameterType="search"	 resultType="int">
+	  	SELECT 	COUNT(*)
+	  	FROM(	
+	  			SELECT 	user_id 
+	  				, 	user_name 
+	  				, 	email
+				FROM 	users
+				<if test="searchCondition != null">
+					<where>
+						<if test="searchCondition == 0 and searchKeyword !='' ">
+				 			user_id = #{searchKeyword}
+						</if>
+						<if test="searchCondition == 1 and searchKeyword !='' ">
+				 			user_name = #{searchKeyword}
+						</if>
+					</where>
+				</if> ) countTable						
 	 </select>
 	 
 </mapper>

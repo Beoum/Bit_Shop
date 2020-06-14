@@ -12,11 +12,9 @@ import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.user.UserDao;
 
 
-//==> 회원관리 DAO CRUD 구현
 @Repository("userDaoImpl")
 public class UserDaoImpl implements UserDao{
 	
-	///Field
 	@Autowired
 	@Qualifier("sqlSessionTemplate")
 	private SqlSession sqlSession;
@@ -24,12 +22,10 @@ public class UserDaoImpl implements UserDao{
 		this.sqlSession = sqlSession;
 	}
 	
-	///Constructor
 	public UserDaoImpl() {
 		System.out.println(this.getClass());
 	}
 
-	///Method
 	public void addUser(User user) throws Exception {
 		sqlSession.insert("UserMapper.addUser", user);
 	}
@@ -46,7 +42,6 @@ public class UserDaoImpl implements UserDao{
 		return sqlSession.selectList("UserMapper.getUserList", search);
 	}
 
-	// 게시판 Page 처리를 위한 전체 Row(totalCount)  return
 	public int getTotalCount(Search search) throws Exception {
 		return sqlSession.selectOne("UserMapper.getTotalCount", search);
 	}

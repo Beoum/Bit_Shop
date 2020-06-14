@@ -5,15 +5,15 @@ import java.sql.Date;
 
 public class Product {
 	
-	private String fileName;
-	private String manuDate;
-	private int price;
-	private String prodDetail;
-	private String prodName;
-	private int prodNo;
-	private Date regDate;
-	private String proTranCode;
-	private Category category;
+	private String fileName; // 상품의 이미지 이름
+	private String manuDate; // 상품의 제조일자
+	private int price; // 상품의 가격
+	private String prodDetail; // 상의의 상세정보
+	private String prodName; // 상품의 이름
+	private int prodNo; // 상품의 고유 번호
+	private Date regDate; // 상품의 등록일자
+	private String proTranCode; // 상품의 상태번호
+	private Category category; // 상품의 카테고리
 	
 	public Product(){
 	}

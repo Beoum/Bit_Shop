@@ -13,9 +13,10 @@ public class Page {
 	private int beginUnitPage;	//화면에 보여지는 페이지 번호의 최소수
 	private int endUnitPage;		//화면에 보여지는 페이지 번호의 최대수
 	
-	///Constructor
 	public Page() {
+		
 	}
+	
 	public Page( int currentPage, int totalCount,	int pageUnit, int pageSize ) {
 		this.totalCount = totalCount;
 		this.pageUnit = pageUnit;
@@ -36,7 +37,6 @@ public class Page {
 		}
 	}
 	
-	///Mehtod
 	public int getCurrentPage() {
 		return currentPage;
 	}

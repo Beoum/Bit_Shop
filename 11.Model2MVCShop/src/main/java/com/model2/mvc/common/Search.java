@@ -1,21 +1,15 @@
 package com.model2.mvc.common;
 
-
-//==>리스트화면을 모델링(추상화/캡슐화)한 Bean 
 public class Search {
 	
 	///Field
-	private int currentPage;
-	private String searchCondition;
-	private String searchKeyword;
-	private int pageSize;
-	//==> 리스트화면 currentPage에 해당하는 회원정보를 ROWNUM 사용 SELECT 위해 추가된 Field 
-	//==> UserMapper.xml 의 
-	//==> <select  id="getUserList"  parameterType="search"	resultMap="userSelectMap">
-	//==> 참조
-	private int endRowNum;
-	private int startRowNum;
-	private String orderBy;
+	private int currentPage; // 현재 페이지
+	private String searchCondition; // 검색조건
+	private String searchKeyword; // 검색 키워드
+	private int pageSize; // 한페이지에 몇개를 보여줄것인지
+	private int endRowNum; // 페이징 처리시 마지막 숫자
+	private int startRowNum; // 페이징 처리시 시작 숫자
+	private String orderBy; // 정렬 기준
 	private String menu;
 	
 	///Constructor

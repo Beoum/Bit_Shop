@@ -13,12 +13,9 @@ import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.user.UserService;
 import com.model2.mvc.service.user.UserDao;;
 
-
-//==> 회원관리 서비스 구현
 @Service("userServiceImpl")
 public class UserServiceImpl implements UserService{
 	
-	///Field
 	@Autowired
 	@Qualifier("userDaoImpl")
 	private UserDao userDao;
@@ -26,12 +23,10 @@ public class UserServiceImpl implements UserService{
 		this.userDao = userDao;
 	}
 	
-	///Constructor
 	public UserServiceImpl() {
 		System.out.println(this.getClass());
 	}
 
-	///Method
 	public void addUser(User user) throws Exception {
 		userDao.addUser(user);
 	}
