@@ -41,7 +41,6 @@ public class UserRestController {
 									HttpSession session ) throws Exception{
 	
 		System.out.println("/user/json/login : POST");
-		//Business Logic
 		System.out.println("::"+user);
 		User dbUser=userService.getUser(user.getUserId());
 		

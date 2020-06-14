@@ -41,13 +41,12 @@ public class ProductController {
 	private ProductService productService;
 	
 	public ProductController() {
-		System.out.println("Product default Constructor start().....");
+		
 	}
 	
 	@Autowired
 	public ProductController(ProductService productService) {
 		this.productService=productService;
-		System.out.println("Controller <- Service AutoWired start");
 	}
 	
 	@RequestMapping(value="addProductView", method=RequestMethod.GET)
@@ -119,16 +118,14 @@ public class ProductController {
 		}
 		
 		search.setPageSize(pageSize);
-		// Business logic 수행
 
-			Map<String , Object> map= productService.getProductList(search);
-			
-			Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
-			
-			// Model 과 View 연결
-			model.addAttribute("list", map.get("list"));
-			model.addAttribute("resultPage", resultPage);
-			model.addAttribute("search", search);
+		Map<String , Object> map= productService.getProductList(search);
+		
+		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
+		
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("resultPage", resultPage);
+		model.addAttribute("search", search);
 		
 		return "forward:/product/listProduct.jsp";
 	}

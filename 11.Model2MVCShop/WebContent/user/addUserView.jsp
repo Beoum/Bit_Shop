@@ -9,16 +9,13 @@
 <head>
 	<meta charset="EUC-KR">
 	
-	<!-- 참조 : http://getbootstrap.com/css/   참조 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
-	<!--  ///////////////////////// Bootstrap, jQuery CDN ////////////////////////// -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
-	<!--  ///////////////////////// CSS ////////////////////////// -->
 	<style>
        body > div.container{
         	border: 3px solid #D6CDB7;
@@ -26,21 +23,18 @@
         }
     </style>
     
-     <!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
 	
-		//============= "가입"  Event 연결 =============
+		// 가입 Event 연결
 		 $(function() {
-			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			$( "button.btn.btn-primary" ).on("click" , function() {
 				fncAddUser();
 			});
 		});	
 		
 		
-		//============= "취소"  Event 처리 및  연결 =============
+		// 취소 Event 처리 및  연결
 		$(function() {
-			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			$("a[href='#' ]").on("click" , function() {
 				$("form")[0].reset();
 			});
@@ -91,7 +85,7 @@
 		}
 		
 
-		//==>"이메일" 유효성Check  Event 처리 및 연결
+		// 이메일 유효성Check  Event 처리 및 연결
 		 $(function() {
 			 
 			 $("input[name='email']").on("change" , function() {
@@ -106,15 +100,13 @@
 		});	
 		
 		
-	   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	   //==> 주민번호 유효성 check 는 이해정도로....
 		function checkSsn() {
 			var ssn1, ssn2; 
 			var nByear, nTyear; 
 			var today; 
 	
 			ssn = document.detailForm.ssn.value;
-			// 유효한 주민번호 형식인 경우만 나이 계산 진행, PortalJuminCheck 함수는 CommonScript.js 의 공통 주민번호 체크 함수임 
+			// 유효한 주민번호 형식인 경우만 나이 계산 진행, PortalJuminCheck 함수는 CommonScript.js 의 공통 주민번호 체크
 			if(!PortalJuminCheck(ssn)) {
 				alert("잘못된 주민번호입니다.");
 				return false;
@@ -137,12 +129,9 @@
 			var mod = sum % 11;
 			return ((11 - mod) % 10 == last) ? true : false;
 		}
-		 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 		 
-		//==>"ID중복확인" Event 처리 및 연결
 		 $(function() {
-			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			 $("button.btn.btn-info").on("click" , function() {
 				popWin 
 				= window.open("/user/checkDuplication.jsp",
@@ -158,20 +147,16 @@
 
 <body>
 
-	<!-- ToolBar Start /////////////////////////////////////-->
 	<div class="navbar  navbar-default">
         <div class="container">
         	<a class="navbar-brand" href="/index.jsp">Model2 MVC Shop</a>
    		</div>
    	</div>
-   	<!-- ToolBar End /////////////////////////////////////-->
 
-	<!--  화면구성 div Start /////////////////////////////////////-->
 	<div class="container">
 	
 		<h1 class="bg-primary text-center">회 원 가 입</h1>
 		
-		<!-- form Start /////////////////////////////////////-->
 		<form class="form-horizontal">
 		
 		  <div class="form-group">
@@ -259,10 +244,8 @@
 		    </div>
 		  </div>
 		</form>
-		<!-- form Start /////////////////////////////////////-->
 		
  	</div>
-	<!--  화면구성 div end /////////////////////////////////////-->
 	
 </body>
 

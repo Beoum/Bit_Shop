@@ -19,32 +19,26 @@
 <head>
 	<meta charset="EUC-KR">
 	
-	<!-- 참조 : http://getbootstrap.com/css/   -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
-	<!--  ///////////////////////// Bootstrap, jQuery CDN ////////////////////////// -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
-	<!--  ///////////////////////// CSS ////////////////////////// -->
 	<style></style>
    	
-   	<!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
 		
-		//============= 회원원가입 화면이동 =============
+		// 회원원가입 화면이동 
 		$( function() {
-			//==> 추가된부분 : "addUser"  Event 연결
 			$("a[href='#' ]:contains('회원가입')").on("click" , function() {
 				self.location = "/user/addUser"
 			});
 		});
 		
-		//============= 로그인 화면이동 =============
+		// 로그인 화면이동
 		$( function() {
-			//==> 추가된부분 : "addUser"  Event 연결
 			$("a[href='#' ]:contains('로 그 인')").on("click" , function() {
 				self.location = "/user/login"
 			});
@@ -62,14 +56,12 @@
 
 <body>
 
-	<!-- ToolBar Start /////////////////////////////////////-->
 	<div class="navbar  navbar-default">
 		
         <div class="container">
         
         	<a class="navbar-brand" href="#">Model2 MVC Shop</a>
 			
-			<!-- toolBar Button Start //////////////////////// -->
 			<div class="navbar-header">
 			    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#target">
 			        <span class="sr-only">Toggle navigation</span>
@@ -78,7 +70,6 @@
 			        <span class="icon-bar"></span>
 			    </button>
 			</div>
-			<!-- toolBar Button End //////////////////////// -->
 			
 			<div class="collapse navbar-collapse"  id="target">
 	             <ul class="nav navbar-nav navbar-right">
@@ -89,23 +80,17 @@
    		
    		</div>
    	</div>
-   	<!-- ToolBar End /////////////////////////////////////-->
    	
-	<!--  화면구성 div Start /////////////////////////////////////-->
 	<div class="container">
 		
-		<!-- 다단레이아웃  Start /////////////////////////////////////-->
 		<div class="row">
 	
-			<!--  Menu 구성 Start /////////////////////////////////////-->     	
 			<div class="col-md-3">
 		        
-		       	<!--  회원관리 목록에 제목 -->
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<i class="glyphicon glyphicon-heart"></i> 회원관리
          			</div>
-         			<!--  회원관리 아이템 -->
 					<ul class="list-group">
 						 <li class="list-group-item">
 						 	<a href="#">개인정보조회</a> <i class="glyphicon glyphicon-ban-circle"></i>
@@ -148,9 +133,6 @@
 				</div>
 				
 			</div>
-			<!--  Menu 구성 end /////////////////////////////////////-->   
-
-	 	 	<!--  Main start /////////////////////////////////////-->   		
 	 	 	<div class="col-md-9">
 				<div class="jumbotron">
 			  		<h1>Model2 MVC Shop</h1>
@@ -165,14 +147,9 @@
 			  	
 			  	</div>
 	        </div>
-	   	 	<!--  Main end /////////////////////////////////////-->   		
 	 	 	
 		</div>
-		<!-- 다단레이아웃  end /////////////////////////////////////-->
-		
 	</div>
-	<!--  화면구성 div end /////////////////////////////////////-->
-
 </body>
 
 </html>

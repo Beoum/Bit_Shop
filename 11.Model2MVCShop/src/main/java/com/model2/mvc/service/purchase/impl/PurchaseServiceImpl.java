@@ -50,12 +50,14 @@ public class PurchaseServiceImpl implements PurchaseService {
 	public void updatePurchase(Purchase purchase) throws Exception {
 		purchaseDAO.updatePurchase(purchase);
 	}
-
+	
+	// 상품 상태 코드를 업데이트 하는 메소드
 	@Override
 	public void updateTranCode(Purchase purchase) throws Exception {
 		purchaseDAO.updateTranCode(purchase);
 	}
-
+	
+	// 구매 품목 리스트의 총 갯수를 조회하는 메소드
 	@Override
 	public int getTotalCount(Search search) throws Exception {
 		return purchaseDAO.getTotalCount(search);

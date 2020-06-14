@@ -6,9 +6,7 @@
  
 <div class="container text-center">
 		 <nav>
-		  <!-- 크기조절 :  pagination-lg pagination-sm-->
 		  <ul class="pagination" >
-		    <!--  <<== 좌측 nav -->
 		  	<c:if test="${ resultPage.currentPage <= resultPage.pageUnit }">
 		 		<li class="disabled">
 			</c:if>
@@ -22,11 +20,9 @@
 		      	</c:if>
 		    </li>
 		    
-		    <!--  중앙  -->
 			<c:forEach var="i"  begin="${resultPage.beginUnitPage}" end="${resultPage.endUnitPage}" step="1">
 				
 				<c:if test="${ resultPage.currentPage == i }">
-					<!--  현재 page 가르킬경우 : active -->
 				    <li class="active">
 				    	<a href="javascript:fncGetUserList('${ i }');">${ i }<span class="sr-only">(current)</span></a>
 				    </li>
@@ -39,7 +35,6 @@
 				</c:if>
 			</c:forEach>
 		    
-		     <!--  우측 nav==>> -->
 		     <c:if test="${ resultPage.endUnitPage >= resultPage.maxPage }">
 		  		<li class="disabled">
 			</c:if>
