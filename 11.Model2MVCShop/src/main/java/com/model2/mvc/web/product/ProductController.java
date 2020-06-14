@@ -69,45 +69,45 @@ public class ProductController {
 	public String getProduct(Product product, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		System.out.println("/getProduct");
 		
-		String cookieValue = request.getParameter("prodNo");
-		String history = "";
-
-		if(request.getCookies() != null) {
-				for(Cookie cookie: request.getCookies()) {
-					System.out.println("cookie name : " + cookie.getName());
-					if(!(cookie.getName().equals("JSESSIONID"))) {
-						String[] h = cookie.getValue().split(",");
-						System.out.println("h의 length : " + h.length);
-						for(int i = 0 ; i < h.length ; i++) {
-							if(h[i].equals(request.getParameter("prodNo").trim())) {
-								cookieValue="";
-								break;
-							}
-						}
-						if(cookieValue.equals("")) {
-							history = cookie.getValue();
-						}else if(cookie.getValue().equals("")){
-							history += cookieValue;
-						}else if(history.equals("")) {
-							history = cookie.getValue();
-						}else {
-							history += "," + cookie.getValue();
-						}
-					}else { //jessionId안의 값만
-						if(history.equals("")) {
-							cookie.setMaxAge(0);
-							history = cookieValue;
-						}else if(!(cookieValue.equals(""))){
-							System.out.println("else in + , start");
-							history += ","+cookieValue;
-						}
-						
-					}
-				}
-			Cookie historyCookie = new Cookie("history", history);
-			historyCookie.setPath("/");
-			response.addCookie(historyCookie);
-		}
+//		String cookieValue = request.getParameter("prodNo");
+//		String history = "";
+//
+//		if(request.getCookies() != null) {
+//				for(Cookie cookie: request.getCookies()) {
+//					System.out.println("cookie name : " + cookie.getName());
+//					if(!(cookie.getName().equals("JSESSIONID"))) {
+//						String[] h = cookie.getValue().split(",");
+//						System.out.println("h의 length : " + h.length);
+//						for(int i = 0 ; i < h.length ; i++) {
+//							if(h[i].equals(request.getParameter("prodNo").trim())) {
+//								cookieValue="";
+//								break;
+//							}
+//						}
+//						if(cookieValue.equals("")) {
+//							history = cookie.getValue();
+//						}else if(cookie.getValue().equals("")){
+//							history += cookieValue;
+//						}else if(history.equals("")) {
+//							history = cookie.getValue();
+//						}else {
+//							history += "," + cookie.getValue();
+//						}
+//					}else { //jessionId안의 값만
+//						if(history.equals("")) {
+//							cookie.setMaxAge(0);
+//							history = cookieValue;
+//						}else if(!(cookieValue.equals(""))){
+//							System.out.println("else in + , start");
+//							history += ","+cookieValue;
+//						}
+//						
+//					}
+//				}
+//			Cookie historyCookie = new Cookie("history", history);
+//			historyCookie.setPath("/");
+//			response.addCookie(historyCookie);
+//		}
 		
 		
 		Product getProduct = productService.getProduct(product.getProdNo());
