@@ -9,9 +9,9 @@
 				 http://www.springframework.org/schema/aop 
 				 http://www.springframework.org/schema/aop/spring-aop.xsd">
 				
-	<bean 	id="logAspect"		class="com.model2.mvc.common.aspect.LogAspectJ" />
+	<bean id="logAspect" class="com.model2.mvc.common.aspect.LogAspectJ" />
 	 <aop:config>
-	 	<aop:aspect  ref="logAspect">
+	 	<aop:aspect ref="logAspect">
 	 		<aop:around pointcut="execution(* com.model2.mvc.service..*Impl.*(..) )" method="invoke"/>
 	 	</aop:aspect>
 	 </aop:config>

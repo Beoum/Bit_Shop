@@ -16,9 +16,9 @@
 	<util:properties id="commonProperties" location="classpath:config/common.properties"/>
 		
 	<context:component-scan base-package="com.model2.mvc.service">
-		<context:include-filter type="annotation"	expression="org.springframework.stereotype.Service" />
-		<context:include-filter type="annotation"	expression="org.springframework.stereotype.Repository" />
-		<context:exclude-filter type="annotation" 	expression="org.springframework.stereotype.Controller" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>				
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

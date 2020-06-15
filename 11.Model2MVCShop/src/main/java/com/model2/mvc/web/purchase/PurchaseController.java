@@ -32,7 +32,7 @@ public class PurchaseController {
 	private UserService userService;
 	
 	public PurchaseController() {
-		System.out.println(this.getClass());
+		
 	}
 	
 	@Autowired
@@ -192,8 +192,6 @@ public class PurchaseController {
 		modelAndView.addObject("resultPage", resultPage);
 		
 		modelAndView.setViewName("/purchase/listPurchase.jsp");
-		System.out.println("map : " + map);
-		System.out.println("resultPage : " + resultPage);
 		
 		return modelAndView;
 	}

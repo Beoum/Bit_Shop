@@ -30,8 +30,6 @@ public class CategoryRestController {
 		
 		List<Category> list = categoryService.getCategoryHierarchy(category);
 		
-		System.out.println("list : " + list);
-		
 		return categoryService.getCategoryHierarchy(category);
 	}
 

@@ -27,7 +27,6 @@ public class UserController {
 	
 	
 	private UserService userService;
-	//setter Method 구현 않음
 		
 	public UserController(){
 		
@@ -149,7 +148,6 @@ public class UserController {
 		Map<String , Object> map=userService.getUserList(search);
 		
 		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
-		System.out.println(resultPage);
 		
 		// Model 과 View 연결
 		model.addAttribute("list", map.get("list"));
