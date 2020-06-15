@@ -1,6 +1,5 @@
 package com.model2.mvc.service.category.impl;
 
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.model2.mvc.service.category.CategoryDAO;
 import com.model2.mvc.service.domain.Category;
 
-@Repository
+//@Repository
 public class CategoryDAOImpl implements CategoryDAO {
 	
 	private SqlSession sqlSession;

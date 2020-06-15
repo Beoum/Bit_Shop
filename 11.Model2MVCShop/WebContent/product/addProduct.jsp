@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,7 @@
 			
 		});
 	</script>
-<title>»óÇ°µî·Ï</title>
+<title>ìƒí’ˆë“±ë¡</title>
 
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
 
@@ -33,7 +33,7 @@
 		<td background="/images/ct_ttl_img02.gif" width="100%" style="padding-left: 10px;">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td width="93%" class="ct_ttl01">»óÇ°µî·Ï</td>
+					<td width="93%" class="ct_ttl01">ìƒí’ˆë“±ë¡</td>
 					<td width="20%" align="right">&nbsp;</td>
 				</tr>
 			</table>
@@ -50,7 +50,7 @@
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			»óÇ°¸í <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+			ìƒí’ˆëª… <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
@@ -68,7 +68,7 @@
 
 	<tr>
 		<td width="104" class="ct_write">
-			»óÇ°»ó¼¼Á¤º¸ <img  src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+			ìƒí’ˆìƒì„¸ì •ë³´ <img  src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">${ProductVO.prodDetail }</td>
@@ -79,7 +79,7 @@
 
 	<tr>
 		<td width="104" class="ct_write">
-			Á¦Á¶ÀÏÀÚ<img	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+			ì œì¡°ì¼ìž<img	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">${ProductVO.manuDate }</td>
@@ -89,7 +89,7 @@
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			°¡°Ý<img 	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+			ê°€ê²©<img 	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">${ProductVO.price }</td>
@@ -99,10 +99,10 @@
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
 	<tr>
-		<td width="104" class="ct_write">»óÇ°ÀÌ¹ÌÁö</td>
+		<td width="104" class="ct_write">ìƒí’ˆì´ë¯¸ì§€</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<!-- Å×ÀÌºí ½ÃÀÛ -->
+			<!-- í…Œì´ë¸” ì‹œìž‘ -->
 			<table border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td height="26">${ProductVO.fileName }</td>
@@ -125,7 +125,7 @@
 						<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top:3px;" id="confirm">
-						È®ÀÎ
+						í™•ì¸
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
@@ -134,7 +134,7 @@
 						<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top:3px;" id="plusAdd">
-						Ãß°¡µî·Ï
+						ì¶”ê°€ë“±ë¡
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>

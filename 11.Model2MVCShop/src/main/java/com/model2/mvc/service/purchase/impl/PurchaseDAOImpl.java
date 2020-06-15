@@ -13,7 +13,7 @@ import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Purchase;
 import com.model2.mvc.service.purchase.PurchaseDAO;
 
-@Repository
+//@Repository
 public class PurchaseDAOImpl implements PurchaseDAO {
 	
 	private SqlSession sqlSession;

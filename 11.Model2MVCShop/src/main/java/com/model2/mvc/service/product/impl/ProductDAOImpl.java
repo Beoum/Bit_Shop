@@ -12,8 +12,7 @@ import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Product;
 import com.model2.mvc.service.product.ProductDAO;
 
-
-@Repository
+//@Repository
 public class ProductDAOImpl implements ProductDAO {
 	
 	private SqlSession sqlSession;

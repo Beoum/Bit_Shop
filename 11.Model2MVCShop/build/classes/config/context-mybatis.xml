@@ -2,10 +2,17 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
 		xsi:schemaLocation=
 				"http://www.springframework.org/schema/beans 
-				 http://www.springframework.org/schema/beans/spring-beans.xsd">
-				
+				 http://www.springframework.org/schema/beans/spring-beans.xsd
+				 http://mybatis.org/schema/mybatis-spring 
+				 http://mybatis.org/schema/mybatis-spring.xsd">
+				 
+				 
+				 
+ 	<mybatis:scan base-package="com.model2.mvc.service" annotation="org.apache.ibatis.annotations.Mapper" />
+	
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean" >
 		<property name="dataSource" ref="dataSource"/>
 		<property name="configLocation" value="classpath:sql/mybatis-config.xml"/>

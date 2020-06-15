@@ -89,7 +89,9 @@ public class Purchase {
 	public void setTranNo(int tranNo) {
 		this.tranNo = tranNo;
 	}
-	
+	public String getDivyDatePretty() {
+		return getDivyDate().substring(0, 4) +"-"+ getDivyDate().substring(5, 7) +"-"+ getDivyDate().substring(8,10);
+	}
 	@Override
 	public String toString() {
 		return "PurchaseVO [buyer=" + buyer + ", divyAddr=" + divyAddr

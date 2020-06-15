@@ -40,19 +40,16 @@ public class ProductRestController {
 	private ProductService productService;
 	
 	public ProductRestController() {
-		System.out.println("Product default Constructor start().....");
 	}
 	
 	@Autowired
 	public ProductRestController(ProductService productService) {
 		this.productService=productService;
-		System.out.println("Controller <- Service AutoWired start");
 	}
 	
 	// 상품 목록에서 ajax처리를 위한 메소드
 	@RequestMapping( value="/json/getProduct", method=RequestMethod.GET)
 	public Product getProductJSON(Product product, Model model) throws Exception{
-		System.out.println("/json/getProduct");
 		
 		Product getProduct = productService.getProduct(product.getProdNo());
 		

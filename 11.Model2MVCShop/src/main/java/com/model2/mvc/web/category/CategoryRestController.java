@@ -27,7 +27,6 @@ public class CategoryRestController {
 	
 	@RequestMapping(value="/json/getCategoryHierarchy", method=RequestMethod.GET)
 	public List<Category> getCategoryHierarchy(Category category) throws Exception{
-		System.out.println("/json/getCategoryHierarchy");
 		
 		List<Category> list = categoryService.getCategoryHierarchy(category);
 		

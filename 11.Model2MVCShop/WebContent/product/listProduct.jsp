@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
-<%@ page pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page pageEncoding="UTF-8"%>
 
 <!--  ///////////////////////// JSTL  ////////////////////////// -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -10,7 +10,7 @@
 <html lang="ko">
 	
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
@@ -36,19 +36,19 @@
     
 	<script type="text/javascript">
 	
-		// °Ë»ö / page µÎ°¡Áö °æ¿ì ¸ğµÎ  Event  Ã³¸® 
+		// ê²€ìƒ‰ / page ë‘ê°€ì§€ ê²½ìš° ëª¨ë‘  Event  ì²˜ë¦¬ 
 		function fncGetUserList(currentPage) {
 			$("#currentPage").val(currentPage)
 			$("form").attr("method" , "POST").attr("action" , "/product/listProduct?menu=${param.menu}&orderBy=${param.orderBy }").submit();
 		}
 		
 		
-		// °Ë»ö  Event  Ã³¸® 
+		// ê²€ìƒ‰  Event  ì²˜ë¦¬ 
 		 $(function() {
 			 $( "button.btn.btn-default" ).on("click" , function() {
 				 var keyword = $("input[name='searchKeyword']").val();
 				 if(keyword.length == 0){
-					 alert('°Ë»öÅ°¿öµå¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä!');
+					 alert('ê²€ìƒ‰í‚¤ì›Œë“œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”!');
 					 history.back();
 				 }
 				fncGetUserList(1);
@@ -58,7 +58,7 @@
 				 if (key.keyCode == 13) {
 					 var keyword = $("input[name='searchKeyword']").val();
 					 if(keyword.length == 0){
-						 alert('°Ë»öÅ°¿öµå¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä!');
+						 alert('ê²€ìƒ‰í‚¤ì›Œë“œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”!');
 						 history.back();
 					 }
 					fncGetUserList(1);
@@ -70,7 +70,7 @@
 			 self.location ="/product/getProduct?prodNo="+prodNo+"&menu=${param.menu}&currentPage=${resultPage.currentPage}&orderBy=${param.orderBy }";
 		};
 		
-		// userId ¿¡ È¸¿øÁ¤º¸º¸±â  Event  Ã³¸® (double Click)
+		// userId ì— íšŒì›ì •ë³´ë³´ê¸°  Event  ì²˜ë¦¬ (double Click)
 		 $(function() {
 			 
 			$(  "td:nth-child(2)" ).on("click" , function() {
@@ -88,11 +88,11 @@
 										"Content-Type" : "application/json"
 									},
 									success : function(JSONData , status) {
-										var link = "<br/><h6><u><a id='detailButton' onclick='javascript:fncGetProduct("+prodNo+")'>»ó¼¼º¸±â</a></u></h6>";
+										var link = "<br/><h6><u><a id='detailButton' onclick='javascript:fncGetProduct("+prodNo+")'>ìƒì„¸ë³´ê¸°</a></u></h6>";
 										var img = "<img src='"+ JSONData.fileName +"' width='100' height='100'/>";
 										var displayValue = "<h6>"
-																	+"»óÇ°¼³¸í : "+JSONData.prodDetail+"<br/>"
-																	+"»óÇ°ÀÌ¹ÌÁö : <br/>" + img
+																	+"ìƒí’ˆì„¤ëª… : "+JSONData.prodDetail+"<br/>"
+																	+"ìƒí’ˆì´ë¯¸ì§€ : <br/>" + img
 																	+"</h6>";
 	
 										$("h6").remove();
@@ -132,14 +132,14 @@
 	<div class="container">
 	
 		<div class="page-header text-info">
-	       <h3>${param.menu == 'search' ? '»óÇ°¸ñ·ÏÁ¶È¸':'»óÇ°°ü¸®' }</h3>
+	       <h3>${param.menu == 'search' ? 'ìƒí’ˆëª©ë¡ì¡°íšŒ':'ìƒí’ˆê´€ë¦¬' }</h3>
 	    </div>
 	    
 	    <div class="row">
 	    
 		    <div class="col-md-6 text-left">
 		    	<p class="text-primary">
-		    		ÀüÃ¼  ${resultPage.totalCount } °Ç¼ö, ÇöÀç ${resultPage.currentPage}  ÆäÀÌÁö
+		    		ì „ì²´  ${resultPage.totalCount } ê±´ìˆ˜, í˜„ì¬ ${resultPage.currentPage}  í˜ì´ì§€
 		    	</p>
 		    </div>
 		    
@@ -148,14 +148,14 @@
 			    
 				  <div class="form-group">
 				    <select class="form-control" name="searchCondition" >
-						<option value="0" ${!empty search.searchCondition && search.searchCondition==0 ? "selected":"" }>»óÇ°¹øÈ£</option>
-						<option value="1" ${!empty search.searchCondition && search.searchCondition==1 ? "selected":"" }>»óÇ°¸í</option>
-						<option value="2" ${!empty search.searchCondition && search.searchCondition==2 ? "selected":"" }>»óÇ°°¡°İ</option>
+						<option value="0" ${!empty search.searchCondition && search.searchCondition==0 ? "selected":"" }>ìƒí’ˆë²ˆí˜¸</option>
+						<option value="1" ${!empty search.searchCondition && search.searchCondition==1 ? "selected":"" }>ìƒí’ˆëª…</option>
+						<option value="2" ${!empty search.searchCondition && search.searchCondition==2 ? "selected":"" }>ìƒí’ˆê°€ê²©</option>
 					</select>
 				  </div>
 				  
 				  <div class="form-group">
-				    <label class="sr-only" for="searchKeyword">°Ë»ö¾î</label>
+				    <label class="sr-only" for="searchKeyword">ê²€ìƒ‰ì–´</label>
 					<c:if test="${empty param.searchKeyword }">
 						<input type="text" name="searchKeyword"  class="form-control" >
 					</c:if>
@@ -164,7 +164,7 @@
 					</c:if>
 				  </div>
 				  
-				  <button type="button" class="btn btn-default">°Ë»ö</button>
+				  <button type="button" class="btn btn-default">ê²€ìƒ‰</button>
 				  
 				  <input type="hidden" id="currentPage" name="currentPage" value="${resultPage.currentPage}"/>
 				  
@@ -177,12 +177,12 @@
 			<tr>
 					<div float:right>
 					<c:if test="${empty param.searchKeyword}">
-						<u><a href="/product/listProduct?orderBy=DESC&menu=${param.menu }">°¡°İ³ôÀº¼ø</a></u>
-						<u><a href="/product/listProduct?orderBy=ASC&menu=${param.menu }">°¡°İ³·Àº¼ø</a></u></div>
+						<u><a href="/product/listProduct?orderBy=DESC&menu=${param.menu }">ê°€ê²©ë†’ì€ìˆœ</a></u>
+						<u><a href="/product/listProduct?orderBy=ASC&menu=${param.menu }">ê°€ê²©ë‚®ì€ìˆœ</a></u></div>
 					</c:if>	
 					<c:if test="${!empty param.searchKeyword}">
-						<u><a href="/product/listProduct?orderBy=DESC&menu=${param.menu }&searchKeyword=${param.searchKeyword}&searchCondition=${search.searchCondition}">°¡°İ³ôÀº¼ø</a></u>
-						<u><a href="/product/listProduct?orderBy=ASC&menu=${param.menu }&searchKeyword=${param.searchKeyword}&searchCondition=${search.searchCondition}">°¡°İ³·Àº¼ø</a></u>
+						<u><a href="/product/listProduct?orderBy=DESC&menu=${param.menu }&searchKeyword=${param.searchKeyword}&searchCondition=${search.searchCondition}">ê°€ê²©ë†’ì€ìˆœ</a></u>
+						<u><a href="/product/listProduct?orderBy=ASC&menu=${param.menu }&searchKeyword=${param.searchKeyword}&searchCondition=${search.searchCondition}">ê°€ê²©ë‚®ì€ìˆœ</a></u>
 					</c:if>	
 					<c:if test="${!empty param.menu }">
 						<input type="hidden" name="orderBy" value="${param.orderBy }"/>
@@ -195,43 +195,43 @@
         <thead>
           <tr>
             <th class="text-center">No</th>
-            <th class="text-center">»óÇ°¸í<br/><h7>(»ó¼¼º¸±â : »óÇ°¸íÅ¬¸¯)</h7></th>
-            <th class="text-center">°¡°İ</th>
-            <th class="text-center">µî·ÏÀÏ</th>
-            <th class="text-center">ÇöÀç»óÅÂ</th>
+            <th class="text-center">ìƒí’ˆëª…<br/><h7>(ìƒì„¸ë³´ê¸° : ìƒí’ˆëª…í´ë¦­)</h7></th>
+            <th class="text-center">ê°€ê²©</th>
+            <th class="text-center">ë“±ë¡ì¼</th>
+            <th class="text-center">í˜„ì¬ìƒíƒœ</th>
           </tr>
         </thead>
        
 		<tbody>
 		
 		  <c:set var="i" value="0" />
-		  <c:forEach var="product" items="${list}">
-			<c:set var="i" value="${ i+1 }" />
+		  <c:forEach var="product" items="${list}" varStatus="status">
+		  <c:set var="i" value="${ i+1 }" />
 			<tr>
 			  <td class="text-center">${ resultPage.totalCount - (i-1) - (resultPage.currentPage-1) * resultPage.pageSize }</td>
-			  <td class="text-center"  title="Click : »óÇ° Á¤º¸ È®ÀÎ">${product.prodName}<span style="display:none;">${product.prodNo}&tranNo=${product.proTranCode }&menu=${param.menu }</span><h7 id="${product.prodNo }"></h7></td>
+			  <td class="text-center"  title="Click : ìƒí’ˆ ì •ë³´ í™•ì¸">${product.prodName}<span style="display:none;">${product.prodNo}&tranNo=${product.proTranCode }&menu=${param.menu }</span><h7 id="${product.prodNo }"></h7></td>
 			  <td class="text-center">${product.price}</td>
 			  <td class="text-center">${product.regDate}</td>
 			  <td class="text-center">
 				<c:if test="${param.menu == 'manage' }">
 					<c:choose>
 						<c:when test="${list[i].proTranCode.charAt(0) == '1'.charAt(0) }">
-								±¸¸Å¿Ï·á<br/><u><a>¹è¼ÛÇÏ±â</a></u><span style="display:none;">prodNo=${product.prodNo }&tranCode=2&currentPage=${resultPage.currentPage}&searchKeyword=${param.searchKeyword}&menu=${param.menu}</span>
+								êµ¬ë§¤ì™„ë£Œ<br/><u><a>ë°°ì†¡í•˜ê¸°</a></u><span style="display:none;">prodNo=${product.prodNo }&tranCode=2&currentPage=${resultPage.currentPage}&searchKeyword=${param.searchKeyword}&menu=${param.menu}</span>
 						</c:when>
-						<c:when test="${product.proTranCode.charAt(0) == '2'.charAt(0) }">¹è¼ÛÁß</c:when>
-						<c:when test="${product.proTranCode.charAt(0) == '3'.charAt(0) }">¹è¼Û¿Ï·á</c:when>
+						<c:when test="${product.proTranCode.charAt(0) == '2'.charAt(0) }">ë°°ì†¡ì¤‘</c:when>
+						<c:when test="${product.proTranCode.charAt(0) == '3'.charAt(0) }">ë°°ì†¡ì™„ë£Œ</c:when>
 						<c:otherwise>
-							ÆÇ¸ÅÁß
+							íŒë§¤ì¤‘
 						</c:otherwise>
 					</c:choose>
 				</c:if>	
 				<c:if test="${param.menu == 'search' }">
 					<c:choose>
 						<c:when test="${product.proTranCode.charAt(0) == '0'.charAt(0) }">
-							ÆÇ¸ÅÁß
+							íŒë§¤ì¤‘
 						</c:when>
 						<c:otherwise>
-							Àç°í¾øÀ½
+							ì¬ê³ ì—†ìŒ
 						</c:otherwise>
 					</c:choose>
 				</c:if>	

@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
-<%@ page pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -22,17 +22,17 @@
 	         
 	             <ul class="nav navbar-nav">
 	             
-	              <!--  È¸¿ø°ü¸® DrowDown -->
+	              <!--  íšŒì›ê´€ë¦¬ DrowDown -->
 	              <li class="dropdown">
 	                     <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-	                         <span >È¸¿ø°ü¸®</span>
+	                         <span >íšŒì›ê´€ë¦¬</span>
 	                         <span class="caret"></span>
 	                     </a>
 	                     <ul class="dropdown-menu">
-	                         <li><a href="#">°³ÀÎÁ¤º¸Á¶È¸</a></li>
+	                         <li><a href="#">ê°œì¸ì •ë³´ì¡°íšŒ</a></li>
 	                         
 	                         <c:if test="${sessionScope.user.role == 'admin'}">
-	                         	<li><a href="#">È¸¿øÁ¤º¸Á¶È¸</a></li>
+	                         	<li><a href="#">íšŒì›ì •ë³´ì¡°íšŒ</a></li>
 	                         </c:if>
 	                         
 	                         <li class="divider"></li>
@@ -40,36 +40,36 @@
 	                     </ul>
 	                 </li>
 	                 
-	              <!-- ÆÇ¸Å»óÇ°°ü¸® DrowDown  -->
+	              <!-- íŒë§¤ìƒí’ˆê´€ë¦¬ DrowDown  -->
 	               <c:if test="${sessionScope.user.role == 'admin'}">
 		              <li class="dropdown">
 		                     <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-		                         <span>ÆÇ¸Å»óÇ°°ü¸®</span>
+		                         <span>íŒë§¤ìƒí’ˆê´€ë¦¬</span>
 		                         <span class="caret"></span>
 		                     </a>
 		                     <ul class="dropdown-menu">
-		                         <li><a href="#">ÆÇ¸Å»óÇ°µî·Ï</a></li>
-		                         <li><a href="#" id='manageProduct'>ÆÇ¸Å»óÇ°°ü¸®</a></li>
+		                         <li><a href="#">íŒë§¤ìƒí’ˆë“±ë¡</a></li>
+		                         <li><a href="#" id='manageProduct'>íŒë§¤ìƒí’ˆê´€ë¦¬</a></li>
 		                         <li class="divider"></li>
 		                         <li><a href="#">etc..</a></li>
 		                     </ul>
 		                </li>
 	                 </c:if>
 	                 
-	              <!-- ±¸¸Å°ü¸® DrowDown -->
+	              <!-- êµ¬ë§¤ê´€ë¦¬ DrowDown -->
 	              <li class="dropdown">
 	                     <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-	                         <span >»óÇ°±¸¸Å</span>
+	                         <span >ìƒí’ˆêµ¬ë§¤</span>
 	                         <span class="caret"></span>
 	                     </a>
 	                     <ul class="dropdown-menu">
-	                        <li><a href="#">»ó Ç° °Ë »ö</a></li>
+	                        <li><a href="#">ìƒ í’ˆ ê²€ ìƒ‰</a></li>
 	                         
 	                         <c:if test="${sessionScope.user.role == 'user'}">
-	                           <li><a href="#">±¸¸ÅÀÌ·ÂÁ¶È¸</a></li>
+	                           <li><a href="#">êµ¬ë§¤ì´ë ¥ì¡°íšŒ</a></li>
 	                         </c:if>
 	                         
-	                         <li><a href="#">ÃÖ±Ùº»»óÇ°</a></li>
+	                         <li><a href="#">ìµœê·¼ë³¸ìƒí’ˆ</a></li>
 	                         <li class="divider"></li>
 	                         <li><a href="#">etc..</a></li>
 	                     </ul>
@@ -79,7 +79,7 @@
 	             </ul>
 	             
 	             <ul class="nav navbar-nav navbar-right">
-	                <li><a href="#">·Î±×¾Æ¿ô</a></li>
+	                <li><a href="#">ë¡œê·¸ì•„ì›ƒ</a></li>
 	            </ul>
 		</div>
 	    
@@ -90,21 +90,21 @@
    	
    	<script type="text/javascript">
 	
-		// logout Event  Ã³¸®	
+		// logout Event  ì²˜ë¦¬	
 		 $(function() {
-		 	$("a:contains('·Î±×¾Æ¿ô')").on("click" , function() {
+		 	$("a:contains('ë¡œê·¸ì•„ì›ƒ')").on("click" , function() {
 				$(self.location).attr("href","/user/logout");
 			}); 
 		 });
 		
-		// È¸¿øÁ¤º¸Á¶È¸ Event  Ã³¸®	
+		// íšŒì›ì •ë³´ì¡°íšŒ Event  ì²˜ë¦¬	
 		 $(function() {
-		 	$("a:contains('È¸¿øÁ¤º¸Á¶È¸')").on("click" , function() {
+		 	$("a:contains('íšŒì›ì •ë³´ì¡°íšŒ')").on("click" , function() {
 				self.location = "/user/listUser"
 			}); 
 		 });
 		
-	 	$( "a:contains('°³ÀÎÁ¤º¸Á¶È¸')" ).on("click" , function() {
+	 	$( "a:contains('ê°œì¸ì •ë³´ì¡°íšŒ')" ).on("click" , function() {
 			$(self.location).attr("href","/user/getUser?userId=${sessionScope.user.userId}");
 		});
 		
@@ -112,15 +112,15 @@
 			$(self.location).attr("href","/product/listProduct?menu=manage");
 		});
 		
-	 	$( "a:contains('ÆÇ¸Å»óÇ°µî·Ï')" ).on("click" , function() {
+	 	$( "a:contains('íŒë§¤ìƒí’ˆë“±ë¡')" ).on("click" , function() {
 			$(self.location).attr("href","/product/addProductView");
 		});
 	 	
-		$("a:contains('»ó Ç° °Ë »ö')").on("click", function(){
+		$("a:contains('ìƒ í’ˆ ê²€ ìƒ‰')").on("click", function(){
 			$(self.location).attr("href","/product/listProduct?menu=search");
 		});
 		
-		$("a:contains('±¸¸ÅÀÌ·ÂÁ¶È¸')").on("click", function(){
+		$("a:contains('êµ¬ë§¤ì´ë ¥ì¡°íšŒ')").on("click", function(){
 			$(self.location).attr("href","/purchase/listPurchase");
 		});
 	</script>  

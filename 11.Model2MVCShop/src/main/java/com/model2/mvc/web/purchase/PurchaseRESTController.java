@@ -37,8 +37,6 @@ public class PurchaseRESTController {
 	@RequestMapping(value="/json/getPurchase", method=RequestMethod.GET)
 	public Purchase getPurchase(Purchase purchase) throws Exception {
 		
-		System.out.println("/getPurhcase.do");
-		
 		Purchase purchaseView = purchaseService.findPurchase(purchase.getTranNo());
 		
 		return purchaseView;

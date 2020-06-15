@@ -18,21 +18,21 @@ import com.model2.mvc.service.user.UserService;
 @RequestMapping("/user/*")
 public class UserRestController {
 	
-	///Field
-	@Autowired
-	@Qualifier("userServiceImpl")
+	
 	private UserService userService;
 		
 	public UserRestController(){
-		System.out.println(this.getClass());
+		
+	}
+	
+	@Autowired
+	public UserRestController(UserService userService) {
+		this.userService = userService;
 	}
 	
 	@RequestMapping( value="json/getUser/{userId}", method=RequestMethod.GET )
 	public User getUser( @PathVariable String userId ) throws Exception{
 		
-		System.out.println("/user/json/getUser : GET");
-		
-		//Business Logic
 		return userService.getUser(userId);
 	}
 
@@ -40,8 +40,6 @@ public class UserRestController {
 	public User login(	@RequestBody User user,
 									HttpSession session ) throws Exception{
 	
-		System.out.println("/user/json/login : POST");
-		System.out.println("::"+user);
 		User dbUser=userService.getUser(user.getUserId());
 		
 		if( user.getPassword().equals(dbUser.getPassword())){

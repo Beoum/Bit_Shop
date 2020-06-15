@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
-<%@ page pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8R" %>
+<%@ page pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -9,7 +9,7 @@
 <html lang="ko">
 	
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
@@ -22,26 +22,26 @@
     
 	<script type="text/javascript">
 	
-		// Áßº¹È®ÀÎ  Event Ã³¸®
+		// ì¤‘ë³µí™•ì¸  Event ì²˜ë¦¬
 		$(function() {
 			
 			$("#userId").focus();
 			$("button.btn.btn-info").on("click" , function() {
 				
-				// Form À¯È¿¼º °ËÁõ
+				// Form ìœ íš¨ì„± ê²€ì¦
 				if( $("#userId").val() != null && $("#userId").val().length >0) {
 					$("form").attr("method" , "POST");
 				    $("form").attr("action" , "/user/checkDuplication");
 				    $("form").submit();
 				}else {
-					alert('¾ÆÀÌµğ´Â ¹İµå½Ã ÀÔ·ÂÇÏ¼Å¾ß ÇÕ´Ï´Ù.');
+					alert('ì•„ì´ë””ëŠ” ë°˜ë“œì‹œ ì…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.');
 				}
 				$("#userId").focus();
 			});
 		});
 	
 	
-		// »ç¿ë  Event Ã³¸® 
+		// ì‚¬ìš©  Event ì²˜ë¦¬ 
 		$(function() {
 			$("button.btn.btn-success").on("click" , function() {
 				
@@ -55,7 +55,7 @@
 		});
 		
 		
-		// ´İ±â   Event  Ã³¸®
+		// ë‹«ê¸°   Event  ì²˜ë¦¬
 		$(function() {
 			$("button.btn.btn-primary").on("click" , function() {
 				window.close();
@@ -75,30 +75,30 @@
 		<form class="form-inline">
 		
 		  <div class="form-group">
-		    <label for="userId">¾Æ ÀÌ µğ</label>
-		    <input type="text" class="form-control" name="userId" id="userId"  placeholder="¾ÆÀÌµğ"
+		    <label for="userId">ì•„ ì´ ë””</label>
+		    <input type="text" class="form-control" name="userId" id="userId"  placeholder="ì•„ì´ë””"
 		    																		value="${ ! empty result && result ? userId : '' }" >
 		  </div>
-		  <button type="button" class="btn btn-info">Áßº¹È®ÀÎ</button>
+		  <button type="button" class="btn btn-info">ì¤‘ë³µí™•ì¸</button>
 		  
 		  <c:if test="${ ! empty result }">
 		  	<c:if test="${ result =='true' }">
-		  		<button type="button" class="btn btn-success">»ç ¿ë</button>
+		  		<button type="button" class="btn btn-success">ì‚¬ ìš©</button>
 		  	</c:if>
 		  </c:if>
 		  
-		  <button type="button" class="btn btn-primary">´İ ±â</button>
+		  <button type="button" class="btn btn-primary">ë‹« ê¸°</button>
 		  
 		  <c:if test="${ empty result }">
-		  	<span class="text-info glyphicon glyphicon-ok">ÀÔ·ÂÈÄÁßº¹È®ÀÎ</span>
+		  	<span class="text-info glyphicon glyphicon-ok">ì…ë ¥í›„ì¤‘ë³µí™•ì¸</span>
 		  </c:if>
 		  
 		  <c:if test="${ ! empty result }">
 		  	<c:if test="${ result =='true' }">
-				<span class="text-success glyphicon glyphicon-ok">»ç¿ë°¡´É &nbsp;</span>
+				<span class="text-success glyphicon glyphicon-ok">ì‚¬ìš©ê°€ëŠ¥ &nbsp;</span>
 			</c:if>
 			<c:if test="${ result=='false' }">
-		 		<span class="text-danger glyphicon glyphicon-remove">»ç¿ëºÒ°¡´É</span>
+		 		<span class="text-danger glyphicon glyphicon-remove">ì‚¬ìš©ë¶ˆê°€ëŠ¥</span>
 			</c:if>
 		  </c:if>
 		</form>

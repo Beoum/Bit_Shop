@@ -1,7 +1,6 @@
 package com.model2.mvc.service.product.impl;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -30,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
 	public ProductServiceImpl(ProductDAO productDAO) {
-		this.productDAO=productDAO;
+		this.productDAO = productDAO;
 	}
 	
 	@Override

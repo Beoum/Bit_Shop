@@ -1,20 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 
 <html>
 <head>
 
-<title>��� ��ǰ ����</title>
+<title>열어본 상품 보기</title>
 
 </head>
 <body>
-	����� ��� ��ǰ�� �˰� �ִ�
+	당신이 열어본 상품을 알고 있다
 <br>
 <br>
 <%
-	request.setCharacterEncoding("euc-kr");
-	response.setCharacterEncoding("euc-kr");
+	request.setCharacterEncoding("UTF-8");
+	response.setCharacterEncoding("UTF-8");
 	String history = null;
 	Cookie[] cookies = request.getCookies();
 	if (cookies!=null && cookies.length > 0) {

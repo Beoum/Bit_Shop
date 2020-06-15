@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
-<%@ page pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -9,7 +9,7 @@
 <html lang="ko">
 	
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
@@ -32,7 +32,7 @@
     </style>
     
 	<script type="text/javascript">
-		// ³¯Â¥ ¼±ÅÃ
+		// ë‚ ì§œ ì„ íƒ
 		$( function() {
 		    $( "#datepicker" ).datepicker({
 		      showOn: "button",
@@ -43,7 +43,7 @@
 		});
 	
 	
-		// ¼öÁ¤  Event ¿¬°á
+		// ìˆ˜ì •  Event ì—°ê²°
 		$( function() {
 		    $("#submitButton").on("click", function(){
 		    	$("form").attr("method" , "POST").attr("action" , "/product/addProduct").attr("enctype", "multipart/form-data").submit();
@@ -51,7 +51,7 @@
 		});
 		
 		
-		// Ãë¼Ò  Event Ã³¸® ¹×  ¿¬°á
+		// ì·¨ì†Œ  Event ì²˜ë¦¬ ë°  ì—°ê²°
 		$(function() {
 			$("a[href='#' ]").on("click" , function() {
 				history.back();
@@ -68,49 +68,49 @@
 	<div class="container">
 	
 		<div class="page-header text-center">
-	       <h3 class=" text-info">»óÇ°Á¤º¸ µî·Ï</h3>
-	       <h5 class="text-muted">»óÇ°µî·Ï</h5>
+	       <h3 class=" text-info">ìƒí’ˆì •ë³´ ë“±ë¡</h3>
+	       <h5 class="text-muted">ìƒí’ˆë“±ë¡</h5>
 	    </div>
 	    
 		<form class="form-horizontal">
 		  <div class="form-group">
-		    <label for="password" class="col-sm-offset-1 col-sm-3 control-label">»óÇ°¸í</label>
+		    <label for="password" class="col-sm-offset-1 col-sm-3 control-label">ìƒí’ˆëª…</label>
 		    <div class="col-sm-4">
 		      <input type="text" class="form-control" name="prodName">
 		    </div>
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="password2" class="col-sm-offset-1 col-sm-3 control-label">»óÇ°»ó¼¼Á¤º¸</label>
+		    <label for="password2" class="col-sm-offset-1 col-sm-3 control-label">ìƒí’ˆìƒì„¸ì •ë³´</label>
 		    <div class="col-sm-4">
 		      <input type="text" class="form-control" name="prodDetail">
 		    </div>
 		  </div>
 		  
 		  <div class="form-group">
-		    <label class="col-sm-offset-1 col-sm-3 control-label">Á¦Á¶ÀÏÀÚ</label>
+		    <label class="col-sm-offset-1 col-sm-3 control-label">ì œì¡°ì¼ì</label>
 		    <div class="col-sm-4">
 		      <input id="datepicker" type="text" class="form-control" name="manuDate">
 		    </div>
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">°¡°İ</label>
+		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">ê°€ê²©</label>
 		    <div class="col-sm-4">
 		      <input type="text" class="form-control" name="price"  value="${product.price }">
 		    </div>
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">»óÇ°ÀÌ¹ÌÁö</label>
+		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">ìƒí’ˆì´ë¯¸ì§€</label>
 		     <div class="col-sm-4">
 		     	<input	type="file" name="imgFile"/> 	
 		    </div>
 		  
 		  <div class="form-group">
 		    <div class="col-sm-offset-4  col-sm-4 text-center">
-		      <button type="button" class="btn btn-primary" id="submitButton" >µî &nbsp;·Ï</button>
-			  <a class="btn btn-primary btn" href="#" role="button">Ãë &nbsp;¼Ò</a>
+		      <button type="button" class="btn btn-primary" id="submitButton" >ë“± &nbsp;ë¡</button>
+			  <a class="btn btn-primary btn" href="#" role="button">ì·¨ &nbsp;ì†Œ</a>
 		    </div>
 		  </div>
 		</form>

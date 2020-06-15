@@ -13,18 +13,20 @@ import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.user.UserService;
 import com.model2.mvc.service.user.UserDao;;
 
-@Service("userServiceImpl")
+@Service
 public class UserServiceImpl implements UserService{
 	
-	@Autowired
-	@Qualifier("userDaoImpl")
+
 	private UserDao userDao;
-	public void setUserDao(UserDao userDao) {
+	
+	@Autowired
+	public UserServiceImpl(UserDao userDao) {
 		this.userDao = userDao;
 	}
 	
+	
 	public UserServiceImpl() {
-		System.out.println(this.getClass());
+		
 	}
 
 	public void addUser(User user) throws Exception {

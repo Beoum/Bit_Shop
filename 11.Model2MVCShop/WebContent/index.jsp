@@ -1,11 +1,11 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
-<%@ page pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page pageEncoding="UTF-8"%>
 
 
 <!--  ///////////////////////// JSTL  ////////////////////////// -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!-- ///////////////////////////// �α��ν� Forward  /////////////////////////////////////// -->
+<!-- ///////////////////////////// 로그인시 Forward  /////////////////////////////////////// -->
  <c:if test="${ ! empty user }">
  	<jsp:forward page="main.jsp"/>
  </c:if>
@@ -17,7 +17,7 @@
 <html lang="ko">
 	
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
@@ -30,22 +30,22 @@
    	
 	<script type="text/javascript">
 		
-		// ȸ�������� ȭ���̵� 
+		// 회원원가입 화면이동 
 		$( function() {
-			$("a[href='#' ]:contains('ȸ������')").on("click" , function() {
+			$("a[href='#' ]:contains('회원가입')").on("click" , function() {
 				self.location = "/user/addUser"
 			});
 		});
 		
-		// �α��� ȭ���̵�
+		// 로그인 화면이동
 		$( function() {
-			$("a[href='#' ]:contains('�� �� ��')").on("click" , function() {
+			$("a[href='#' ]:contains('로 그 인')").on("click" , function() {
 				self.location = "/user/login"
 			});
 		});
 		
 		$(function() {
-			$("a:contains('��ǰ�˻�')").on("click", function(){
+			$("a:contains('상품검색')").on("click", function(){
 				$(self.location).attr("href","/product/listProduct?menu=search");
 			});
 		})
@@ -73,8 +73,8 @@
 			
 			<div class="collapse navbar-collapse"  id="target">
 	             <ul class="nav navbar-nav navbar-right">
-	                 <li><a href="#">ȸ������</a></li>
-	                 <li><a href="#">�� �� ��</a></li>
+	                 <li><a href="#">회원가입</a></li>
+	                 <li><a href="#">로 그 인</a></li>
 	           	</ul>
 	       </div>
    		
@@ -89,14 +89,14 @@
 		        
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<i class="glyphicon glyphicon-heart"></i> ȸ������
+						<i class="glyphicon glyphicon-heart"></i> 회원관리
          			</div>
 					<ul class="list-group">
 						 <li class="list-group-item">
-						 	<a href="#">����������ȸ</a> <i class="glyphicon glyphicon-ban-circle"></i>
+						 	<a href="#">개인정보조회</a> <i class="glyphicon glyphicon-ban-circle"></i>
 						 </li>
 						 <li class="list-group-item">
-						 	<a href="#">ȸ��������ȸ</a> <i class="glyphicon glyphicon-ban-circle"></i>
+						 	<a href="#">회원정보조회</a> <i class="glyphicon glyphicon-ban-circle"></i>
 						 </li>
 					</ul>
 		        </div>
@@ -104,14 +104,14 @@
                
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-							<i class="glyphicon glyphicon-briefcase"></i> �ǸŻ�ǰ����
+							<i class="glyphicon glyphicon-briefcase"></i> 판매상품관리
          			</div>
 					<ul class="list-group">
 						 <li class="list-group-item">
-						 	<a href="#">�ǸŻ�ǰ���</a> <i class="glyphicon glyphicon-ban-circle"></i>
+						 	<a href="#">판매상품등록</a> <i class="glyphicon glyphicon-ban-circle"></i>
 						 </li>
 						 <li class="list-group-item">
-						 	<a href="#">�ǸŻ�ǰ����</a> <i class="glyphicon glyphicon-ban-circle"></i>
+						 	<a href="#">판매상품관리</a> <i class="glyphicon glyphicon-ban-circle"></i>
 						 </li>
 					</ul>
 		        </div>
@@ -119,15 +119,15 @@
                
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-							<i class="glyphicon glyphicon-shopping-cart"></i> ��ǰ����
+							<i class="glyphicon glyphicon-shopping-cart"></i> 상품구매
 	    			</div>
 					<ul class="list-group">
-						 <li class="list-group-item"><a href="#">��ǰ�˻�</a></li>
+						 <li class="list-group-item"><a href="#">상품검색</a></li>
 						  <li class="list-group-item">
-						  	<a href="#">�����̷���ȸ</a> <i class="glyphicon glyphicon-ban-circle"></i>
+						  	<a href="#">구매이력조회</a> <i class="glyphicon glyphicon-ban-circle"></i>
 						  </li>
 						 <li class="list-group-item">
-						 	<a href="#">�ֱٺ���ǰ</a> <i class="glyphicon glyphicon-ban-circle"></i>
+						 	<a href="#">최근본상품</a> <i class="glyphicon glyphicon-ban-circle"></i>
 						 </li>
 					</ul>
 				</div>
@@ -136,13 +136,13 @@
 	 	 	<div class="col-md-9">
 				<div class="jumbotron">
 			  		<h1>Model2 MVC Shop</h1>
-			  		<p>�α��� �� ��밡��...</p>
-			  		<p>�α��� �� �˻��� �����մϴ�.</p>
-			  		<p>ȸ������ �ϼ���.</p>
+			  		<p>로그인 후 사용가능...</p>
+			  		<p>로그인 전 검색만 가능합니다.</p>
+			  		<p>회원가입 하세요.</p>
 			  		
 			  		<div class="text-center">
-			  			<a class="btn btn-info btn-lg" href="#" role="button">ȸ������</a>
-			  			<a class="btn btn-info btn-lg" href="#" role="button">�� �� ��</a>
+			  			<a class="btn btn-info btn-lg" href="#" role="button">회원가입</a>
+			  			<a class="btn btn-info btn-lg" href="#" role="button">로 그 인</a>
 			  		</div>
 			  	
 			  	</div>

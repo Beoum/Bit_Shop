@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
-<%@ page pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
@@ -9,7 +9,7 @@
 <html lang="ko">
 	
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
@@ -35,7 +35,7 @@
     
 	<script type="text/javascript">
 	
-		//°Ë»ö / page µÎ°¡Áö °æ¿ì ¸ğµÎ  Event  Ã³¸®	
+		//ê²€ìƒ‰ / page ë‘ê°€ì§€ ê²½ìš° ëª¨ë‘  Event  ì²˜ë¦¬	
 		function fncGetUserList(currentPage) {
 			$("#currentPage").val(currentPage)
 			$("form").attr("method" , "POST").attr("action" , "/purchase/listPurchase").submit();
@@ -45,12 +45,12 @@
 			self.location="/purchase/getPurchase?tranNo="+tranNo + "&currentPage=${resultPage.currentPage}";
 		}
 		
-		// ±¸¸ÅÁ¤º¸ º¸±â Event  Ã³¸®(Click)	
+		// êµ¬ë§¤ì •ë³´ ë³´ê¸° Event  ì²˜ë¦¬(Click)	
 		 $(function() {
 			$( "td:nth-child(1)" ).on("click" , function() {
  				var queryString = $(this).text();
 				var tranNo = queryString.substring(queryString.indexOf("tranNo")+7, queryString.indexOf("tPage")-1);
-				var paymentOption = "Çö±İ";
+				var paymentOption = "í˜„ê¸ˆ";
 				if(!$("#"+tranNo+"" ).html().length){
 					$.ajax( 
 							{
@@ -63,14 +63,14 @@
 								},
 								success : function(JSONData , status) {
 									if(JSONData.paymentOption == 1){
-										paymentOption = "½Å¿ë";
+										paymentOption = "ì‹ ìš©";
 									}
-									var link = "<br/><h6><u><a id='detailButton' onclick='javascript:fncGetPurchase("+tranNo+")'>»ó¼¼º¸±â</a></u></h6>";
+									var link = "<br/><h6><u><a id='detailButton' onclick='javascript:fncGetPurchase("+tranNo+")'>ìƒì„¸ë³´ê¸°</a></u></h6>";
 									var displayValue = "<h6>"
-																+"¹Ş´Â»ç¶÷ : "+JSONData.receiverName+"<br/>"
-																+"¹Ş´ÂÁÖ¼Ò : "+JSONData.divyAddr+"<br/>"
-																+"±¸¸Å±İ¾× : "+JSONData.purchaseProd.price+"<br/>"
-																+"±¸¸Å¹æ¹ı : "+paymentOption+"<br/>"
+																+"ë°›ëŠ”ì‚¬ëŒ : "+JSONData.receiverName+"<br/>"
+																+"ë°›ëŠ”ì£¼ì†Œ : "+JSONData.divyAddr+"<br/>"
+																+"êµ¬ë§¤ê¸ˆì•¡ : "+JSONData.purchaseProd.price+"<br/>"
+																+"êµ¬ë§¤ë°©ë²• : "+paymentOption+"<br/>"
 																+"</h6>";
 	
 									$("h6").remove();
@@ -111,20 +111,19 @@
 </head>
 
 <body>
-	
 	<jsp:include page="/layout/toolbar.jsp" />
 	
 	<div class="container">
 	
 		<div class="page-header text-info">
-	       <h3>±¸¸Å ¸ñ·ÏÁ¶È¸</h3>
+	       <h3>êµ¬ë§¤ ëª©ë¡ì¡°íšŒ</h3>
 	    </div>
 	    
 	    <div class="row">
 	    
 		    <div class="col-md-6 text-left">
 		    	<p class="text-primary">
-		    		ÀüÃ¼  ${resultPage.totalCount } °Ç¼ö, ÇöÀç ${resultPage.currentPage}  ÆäÀÌÁö
+		    		ì „ì²´  ${resultPage.totalCount } ê±´ìˆ˜, í˜„ì¬ ${resultPage.currentPage}  í˜ì´ì§€
 		    	</p>
 		    </div>
 		    
@@ -142,10 +141,10 @@
 
         <thead>
           <tr>
-            <th align="center">Á¦Ç°¸í<br/><h7>(»ó¼¼º¸±â : »óÇ°¸íÅ¬¸¯)</h7></th>
-            <th align="left">ÀüÈ­¹øÈ£</th>
-            <th align="left">¹è¼ÛÇöÈ²</th>
-            <th align="left">Á¤º¸¼öÁ¤</th>
+            <th align="center">ì œí’ˆëª…<br/><h7>(ìƒì„¸ë³´ê¸° : ìƒí’ˆëª…í´ë¦­)</h7></th>
+            <th align="left">ì „í™”ë²ˆí˜¸</th>
+            <th align="left">ë°°ì†¡í˜„í™©</th>
+            <th align="left">ì •ë³´ìˆ˜ì •</th>
           </tr>
         </thead>
        
@@ -155,19 +154,19 @@
 		  <c:forEach var="purchase" items="${list}">
 			<c:set var="i" value="${ i+1 }" />
 			<tr>
-			  <td align="left"  title="Click : »óÇ° Á¤º¸ È®ÀÎ">${purchase.purchaseProd.prodName}<span style="display:none;" class="getPurchaseInfo">/purchase/getPurchase?tranNo=${purchase.tranNo }&currentPage=${resultPage.currentPage}</span><h7 id="${purchase.tranNo }"></h7></td>
+			  <td align="left"  title="Click : ìƒí’ˆ ì •ë³´ í™•ì¸">${purchase.purchaseProd.prodName}<span style="display:none;" class="getPurchaseInfo">/purchase/getPurchase?tranNo=${purchase.tranNo }&currentPage=${resultPage.currentPage}</span><h7 id="${purchase.tranNo }"></h7></td>
 			  <td align="left">${purchase.receiverPhone }</td>
 			  <td align="left">
 				<c:choose>
-					<c:when test="${purchase.tranCode.charAt(0)=='3'.charAt(0) }">¹è¼Û¿Ï·á</c:when>
-					<c:when test="${purchase.tranCode.charAt(0)=='2'.charAt(0) }">¹è¼ÛÁß</c:when>
-					<c:otherwise>±¸¸Å¿Ï·á</c:otherwise>
+					<c:when test="${purchase.tranCode.charAt(0)=='3'.charAt(0) }">ë°°ì†¡ì™„ë£Œ</c:when>
+					<c:when test="${purchase.tranCode.charAt(0)=='2'.charAt(0) }">ë°°ì†¡ì¤‘</c:when>
+					<c:otherwise>êµ¬ë§¤ì™„ë£Œ</c:otherwise>
 				</c:choose>
 		 		<td align="left" class="updateCode">
 				<c:choose>
 					<c:when test="${purchase.tranCode.charAt(0)=='3'.charAt(0) }"/>
 					<c:when test="${purchase.tranCode.charAt(0)=='2'.charAt(0) }">
-					<u><a>¹°°ÇµµÂø</a></u>
+					<u><a>ë¬¼ê±´ë„ì°©</a></u>
 					<span style="display:none;">/purchase/updateTranCode?tranNo=${purchase.tranNo }&tranCode=3&currentPage=${resultPage.currentPage }</span>
 					</c:when>
 				</c:choose>

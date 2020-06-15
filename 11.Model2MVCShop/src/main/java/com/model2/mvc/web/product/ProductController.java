@@ -51,13 +51,11 @@ public class ProductController {
 	
 	@RequestMapping(value="addProductView", method=RequestMethod.GET)
 	public String addProductView() throws Exception {
-		System.out.println("/addProductView.do");
 		return "redirect:/product/addProductView.jsp";
 	}
 	
 	@RequestMapping(value="addProduct", method=RequestMethod.POST)
 	public String addProduct(Product product, MultipartHttpServletRequest mpRequest) throws Exception {
-		System.out.println("/addProduct");
 		
 		productService.addProduct(product, mpRequest);
 		
@@ -66,7 +64,6 @@ public class ProductController {
 	
 	@RequestMapping( value="getProduct", method=RequestMethod.GET)
 	public String getProduct(Product product, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
-		System.out.println("/getProduct");
 		
 		Product getProduct = productService.getProduct(product.getProdNo());
 		
@@ -77,7 +74,6 @@ public class ProductController {
 
 	@RequestMapping(value="updateProductView", method=RequestMethod.GET)
 	public String updateProductView(Product product, Model model) throws Exception{
-		System.out.println("/updateProductView");
 
 		Product getProduct = productService.getProduct(product.getProdNo());
 		
@@ -95,7 +91,6 @@ public class ProductController {
 	@RequestMapping( value="listProduct")
 	public String listProduct(Search search , Model model) throws Exception{
 		
-		System.out.println("/listProduct");
 		if(search.getSearchKeyword() == null) {
 			search.setSearchKeyword("");
 		}

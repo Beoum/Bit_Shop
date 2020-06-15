@@ -12,7 +12,6 @@ import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.user.UserDao;
 
 
-@Repository("userDaoImpl")
 public class UserDaoImpl implements UserDao{
 	
 	@Autowired
@@ -23,7 +22,6 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	public UserDaoImpl() {
-		System.out.println(this.getClass());
 	}
 
 	public void addUser(User user) throws Exception {

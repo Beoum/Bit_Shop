@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
-<%@ page pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page pageEncoding="UTF-8"%>
 
 <!--  ///////////////////////// JSTL  ////////////////////////// -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -9,7 +9,7 @@
 <html lang="ko">
 	
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8R">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
@@ -37,21 +37,21 @@
    	<div class="container ">
       <div class="jumbotron">
         <h1>Model2MVCShop </h1>
-        <p>J2SE , DBMS ,JDBC , Servlet & JSP, Java Framework , HTML5 , UI Framework ÇÐ½À ÈÄ Mini-Project ÁøÇà</p>
+        <p>Main page</p>
      </div>
     </div>
 
 	<div class="container">
 		<p>
-	        <h3>Çàº¹Àº ¸Ö¸® ÀÖ´Â°Ô ¾Æ´Ï¿¡¿ä.</h3>
-	        <h3>¾ø´Â°Å¿¡¿ä.</h3>
+	        <h3>í–‰ë³µì€ ë©€ë¦¬ ìžˆëŠ”ê²Œ ì•„ë‹ˆì—ìš”.</h3>
+	        <h3>ì—†ëŠ”ê±°ì—ìš”.</h3>
         </p>
         <br/><br/>
         
-        <h3>¼¼»óÀº....</h3>
-        <p>'¾È½ÉÇÏ¼¼¿ä'¶ó´Â ¸»À» µéÀ¸¸é ¾È½ÉÇÏ´Â »ç¶÷°ú </p>
-        <p>'µî½ÉÇÏ¸é ¾ÈµÇ³ª¿ä' °°Àº ¼Ò¸®¸¦ ÇÏ°í ½Í¾î ½ÉÀåÀÌ ¹ú·· °Å¸®´Â »ç¶÷À¸·Î ³ª´¶´Ù.</p>
-        <p>³­ ÈÄÀÚ´Ù.</p>
+        <h3>ì„¸ìƒì€....</h3>
+        <p>'ì•ˆì‹¬í•˜ì„¸ìš”'ë¼ëŠ” ë§ì„ ë“¤ìœ¼ë©´ ì•ˆì‹¬í•˜ëŠ” ì‚¬ëžŒê³¼ </p>
+        <p>'ë“±ì‹¬í•˜ë©´ ì•ˆë˜ë‚˜ìš”' ê°™ì€ ì†Œë¦¬ë¥¼ í•˜ê³  ì‹¶ì–´ ì‹¬ìž¥ì´ ë²Œë  ê±°ë¦¬ëŠ” ì‚¬ëžŒìœ¼ë¡œ ë‚˜ë‰œë‹¤.</p>
+        <p>ë‚œ í›„ìžë‹¤.</p>
   	 </div>
 
 </body>

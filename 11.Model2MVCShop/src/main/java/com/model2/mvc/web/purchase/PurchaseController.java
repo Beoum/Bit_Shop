@@ -64,7 +64,6 @@ public class PurchaseController {
 	
 	@RequestMapping(value="addPurchase")
 	public ModelAndView addPurchase(User user, Product product, Purchase purchase) throws Exception{
-		System.out.println("/addPurchase.do");
 		
 		purchase.setBuyer(user);
 		purchase.setPurchaseProd(product);
@@ -81,7 +80,6 @@ public class PurchaseController {
 	
 	@RequestMapping(value="listPurchase")
 	public ModelAndView listPurchase(Search search, HttpSession session) throws Exception {
-		System.out.println("/listPurchase.do");
 		
 		if(search.getCurrentPage() ==0 ){
 			search.setCurrentPage(1);
@@ -104,8 +102,6 @@ public class PurchaseController {
 	
 	@RequestMapping(value="getPurchase", method=RequestMethod.GET)
 	public ModelAndView getPurchase(Purchase purchase) throws Exception {
-		
-		System.out.println("/getPurhcase.do");
 		
 		Purchase view = purchaseService.findPurchase(purchase.getTranNo());
 		
@@ -149,9 +145,6 @@ public class PurchaseController {
 										Model model, 
 										@RequestParam("menu") String menu,
 										Product product) throws Exception {
-		
-		System.out.println("Search : " + search);
-		System.out.println("Purchase : " + purchase);
 		
 		if(search.getSearchCondition() == null) {
 			search.setSearchCondition("0");

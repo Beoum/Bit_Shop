@@ -18,7 +18,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	private PurchaseDAO purchaseDAO;
 	
 	public PurchaseServiceImpl() {
-		// TODO Auto-generated constructor stub
+
 	}
 	
 	@Autowired
@@ -34,7 +34,9 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Override
 	public Map<String, Object> getPurchaseList(Search search, String userId) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("list", purchaseDAO.getPurchaseList(search, userId));
+		map.put("search", search);
+		map.put("userId", userId);
+		map.put("list", purchaseDAO.getPurchaseList(map));
 		map.put("totalCount", purchaseDAO.getTotalCount(search));
 		return map;
 	}

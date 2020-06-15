@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
-<%@ page pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page pageEncoding="UTF-8"%>
 
 
 <!DOCTYPE html>
@@ -7,7 +7,7 @@
 <html lang="ko">
 	
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
@@ -29,7 +29,7 @@
     
 	<script type="text/javascript">
 		
-		// È¸¿øÁ¤º¸¼öÁ¤ Event  Ã³¸® 	
+		// íšŒì›ì •ë³´ìˆ˜ì • Event  ì²˜ë¦¬ 	
 		 $(function() {
 			 $( "button" ).on("click" , function() {
 					self.location = "/user/updateUser?userId=${user.userId}"
@@ -47,47 +47,47 @@
 	<div class="container">
 	
 		<div class="page-header">
-	       <h3 class=" text-info">È¸¿øÁ¤º¸Á¶È¸</h3>
-	       <h5 class="text-muted">³» Á¤º¸¸¦ <strong class="text-danger">ÃÖ½ÅÁ¤º¸·Î °ü¸®</strong>ÇØ ÁÖ¼¼¿ä.</h5>
+	       <h3 class=" text-info">íšŒì›ì •ë³´ì¡°íšŒ</h3>
+	       <h5 class="text-muted">ë‚´ ì •ë³´ë¥¼ <strong class="text-danger">ìµœì‹ ì •ë³´ë¡œ ê´€ë¦¬</strong>í•´ ì£¼ì„¸ìš”.</h5>
 	    </div>
 	
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2"><strong>¾Æ ÀÌ µğ</strong></div>
+	  		<div class="col-xs-4 col-md-2"><strong>ì•„ ì´ ë””</strong></div>
 			<div class="col-xs-8 col-md-4">${user.userId}</div>
 		</div>
 		
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>ÀÌ ¸§</strong></div>
+	  		<div class="col-xs-4 col-md-2 "><strong>ì´ ë¦„</strong></div>
 			<div class="col-xs-8 col-md-4">${user.userName}</div>
 		</div>
 		
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>ÁÖ¼Ò</strong></div>
+	  		<div class="col-xs-4 col-md-2 "><strong>ì£¼ì†Œ</strong></div>
 			<div class="col-xs-8 col-md-4">${user.addr}</div>
 		</div>
 		
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>ÈŞ´ëÀüÈ­¹øÈ£</strong></div>
+	  		<div class="col-xs-4 col-md-2 "><strong>íœ´ëŒ€ì „í™”ë²ˆí˜¸</strong></div>
 			<div class="col-xs-8 col-md-4">${ !empty user.phone ? user.phone : ''}	</div>
 		</div>
 		
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2"><strong>ÀÌ ¸Ş ÀÏ</strong></div>
+	  		<div class="col-xs-4 col-md-2"><strong>ì´ ë©” ì¼</strong></div>
 			<div class="col-xs-8 col-md-4">${user.email}</div>
 		</div>
 		
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>°¡ÀÔÀÏÀÚ</strong></div>
+	  		<div class="col-xs-4 col-md-2 "><strong>ê°€ì…ì¼ì</strong></div>
 			<div class="col-xs-8 col-md-4">${user.regDate}</div>
 		</div>
 		
@@ -95,7 +95,7 @@
 		
 		<div class="row">
 	  		<div class="col-md-12 text-center ">
-	  			<button type="button" class="btn btn-primary">È¸¿øÁ¤º¸¼öÁ¤</button>
+	  			<button type="button" class="btn btn-primary">íšŒì›ì •ë³´ìˆ˜ì •</button>
 	  		</div>
 		</div>
 		

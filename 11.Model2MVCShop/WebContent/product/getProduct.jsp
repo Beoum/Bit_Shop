@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
-<%@ page pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -8,7 +8,7 @@
 <html lang="ko">
 	
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
@@ -30,7 +30,7 @@
     
 	<script type="text/javascript">
 		
-		// È¸¿øÁ¤º¸¼öÁ¤ Event  Ã³¸® 
+		// íšŒì›ì •ë³´ìˆ˜ì • Event  ì²˜ë¦¬ 
 		 $(function() {
 			 $( ".btn-primary" ).on("click" , function() {
 				var menu = "${param.menu}";
@@ -47,7 +47,7 @@
 			});
 			 
 			 $("#categoryList").on("click", function(){
-				 var hierarchy = "Ä«Å×°í¸® ±¸Á¶ : <br/><br/>";
+				 var hierarchy = "ì¹´í…Œê³ ë¦¬ êµ¬ì¡° : <br/><br/>";
 				 $.ajax( 
 							{
 								url : "/category/json/getCategoryHierarchy?categoryId=${product.category.categoryId}",
@@ -78,53 +78,53 @@
 	<div class="container">
 	
 		<div class="page-header">
-	       <h3 class=" text-info">»óÇ°»ó¼¼Á¶È¸</h3>
-	       <h5 class="text-muted">»óÇÄ Á¤º¸¸¦ <strong class="text-danger">ÃÖ½ÅÁ¤º¸·Î °ü¸®</strong>ÇØ ÁÖ¼¼¿ä.</h5>
+	       <h3 class=" text-info">ìƒí’ˆìƒì„¸ì¡°íšŒ</h3>
+	       <h5 class="text-muted">ìƒí”” ì •ë³´ë¥¼ <strong class="text-danger">ìµœì‹ ì •ë³´ë¡œ ê´€ë¦¬</strong>í•´ ì£¼ì„¸ìš”.</h5>
 	    </div>
 	
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2"><strong>»óÇ°¹øÈ£</strong></div>
+	  		<div class="col-xs-4 col-md-2"><strong>ìƒí’ˆë²ˆí˜¸</strong></div>
 			<div class="col-xs-8 col-md-4">${product.prodNo}</div>
 		</div>
 		
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>Ä«Å×°í¸®</strong></div>
+	  		<div class="col-xs-4 col-md-2 "><strong>ì¹´í…Œê³ ë¦¬</strong></div>
 			<div class="col-xs-8 col-md-2" id="categoryList">${ product.category.name}<h6 id="hierarchy"></h6></div>
 		</div>
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>»óÇ°¸í</strong></div>
+	  		<div class="col-xs-4 col-md-2 "><strong>ìƒí’ˆëª…</strong></div>
 			<div class="col-xs-8 col-md-4">${ product.prodName}</div>
 		</div>
 		
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>»óÇ°ÀÌ¹ÌÁö</strong></div>
+	  		<div class="col-xs-4 col-md-2 "><strong>ìƒí’ˆì´ë¯¸ì§€</strong></div>
 			<div class="col-xs-8 col-md-4"><img 	src="${product.fileName}" width="500" height="500" align="center"/></div>
 		</div>
 		
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>»óÇ°»ó¼¼Á¤º¸</strong></div>
+	  		<div class="col-xs-4 col-md-2 "><strong>ìƒí’ˆìƒì„¸ì •ë³´</strong></div>
 			<div class="col-xs-8 col-md-4">${product.prodDetail }</div>
 		</div>
 		
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2"><strong>Á¦Á¶ÀÏÀÚ</strong></div>
+	  		<div class="col-xs-4 col-md-2"><strong>ì œì¡°ì¼ì</strong></div>
 			<div class="col-xs-8 col-md-4">${product.manuDate }</div>
 		</div>
 		
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>°¡°İ</strong></div>
+	  		<div class="col-xs-4 col-md-2 "><strong>ê°€ê²©</strong></div>
 			<div class="col-xs-8 col-md-4">${product.price }</div>
 		</div>
 		
@@ -132,7 +132,7 @@
 		
 	<c:if test="${!empty product.regDate }">
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>µî·ÏÀÏÀÚ</strong></div>
+	  		<div class="col-xs-4 col-md-2 "><strong>ë“±ë¡ì¼ì</strong></div>
 			<div class="col-xs-8 col-md-4">${product.regDate }</div>
 		</div>
 	</c:if>
@@ -141,12 +141,12 @@
 		<div class="row">
 	  		<div class="col-md-12 text-center ">
 	  		<c:if test="${product.proTranCode == '0' && param.menu == 'manage'}">
-	  			<button type="button" class="btn btn-primary">¼öÁ¤</button>
+	  			<button type="button" class="btn btn-primary">ìˆ˜ì •</button>
 	  		</c:if>
 	  		<c:if test="${product.proTranCode == '0' && param.menu == 'search'}">
-	  			<button type="button" class="btn btn-primary">±¸¸Å</button>
+	  			<button type="button" class="btn btn-primary">êµ¬ë§¤</button>
 	  		</c:if>
-	  			<button type="button" class="btn btn-danger">ÀÌÀü</button>
+	  			<button type="button" class="btn btn-danger">ì´ì „</button>
 	  		</div>
 		</div>
 		<br/>

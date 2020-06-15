@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
-<%@ page pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page pageEncoding="UTF-8"%>
 
 <!--  ///////////////////////// JSTL  ////////////////////////// -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -10,7 +10,7 @@
 <html lang="ko">
 	
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
@@ -33,7 +33,7 @@
     </style>
     
 	<script type="text/javascript">
-		// ³¯Â¥ ¼±ÅÃ
+		// ë‚ ì§œ ì„ íƒ
 		$( function() {
 		    $( "#datepicker" ).datepicker({
 		      showOn: "button",
@@ -44,7 +44,7 @@
 		});
 	
 	
-		// ¼öÁ¤  Event ¿¬°á 
+		// ìˆ˜ì •  Event ì—°ê²° 
 		$( function() {
 		    $("#submitButton").on("click", function(){
 		    	$("form").attr("method" , "POST").attr("action" , "/purchase/addPurchase").submit();
@@ -52,9 +52,9 @@
 		});
 		
 		
-		// Ãë¼Ò  Event Ã³¸® ¹×  ¿¬°á
+		// ì·¨ì†Œ  Event ì²˜ë¦¬ ë°  ì—°ê²°
 		$(function() {
-			//==> DOM Object GET 3°¡Áö ¹æ¹ý ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			//==> DOM Object GET 3ê°€ì§€ ë°©ë²• ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			$("a[href='#' ]").on("click" , function() {
 				history.back();
 			});
@@ -70,14 +70,14 @@
 	<div class="container">
 	
 		<div class="page-header text-center">
-	       <h3 class=" text-info">±¸¸ÅÁ¤º¸ µî·Ï</h3>
-	       <h5 class="text-muted">±¸¸ÅÁ¤º¸</h5>
+	       <h3 class=" text-info">êµ¬ë§¤ì •ë³´ ë“±ë¡</h3>
+	       <h5 class="text-muted">êµ¬ë§¤ì •ë³´</h5>
 	    </div>
-	    
+	    <!--  form:form  -->
 		<form class="form-horizontal">
 			<input type="hidden" name="userId" value="${user.userId }" />
 		  <div class="form-group">
-		    <label for="password" class="col-sm-offset-1 col-sm-3 control-label">»óÇ°¹øÈ£</label>
+		    <label for="password" class="col-sm-offset-1 col-sm-3 control-label">ìƒí’ˆë²ˆí˜¸</label>
 		    <div class="col-sm-4">
 		      ${param.prodNo }
 		      <input type="hidden" name="prodNo" value="${param.prodNo }"/>
@@ -85,87 +85,87 @@
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="password2" class="col-sm-offset-1 col-sm-3 control-label">»óÇ°¸í</label>
+		    <label for="password2" class="col-sm-offset-1 col-sm-3 control-label">ìƒí’ˆëª…</label>
 		    <div class="col-sm-4">
 		      ${product.prodName }
 		    </div>
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="password2" class="col-sm-offset-1 col-sm-3 control-label">»óÇ°»ó¼¼Á¤º¸</label>
+		    <label for="password2" class="col-sm-offset-1 col-sm-3 control-label">ìƒí’ˆìƒì„¸ì •ë³´</label>
 		    <div class="col-sm-4">
 		      ${product.prodDetail }
 		    </div>
 		  </div>
 		  
 		  <div class="form-group">
-		    <label class="col-sm-offset-1 col-sm-3 control-label">Á¦Á¶ÀÏÀÚ</label>
+		    <label class="col-sm-offset-1 col-sm-3 control-label">ì œì¡°ì¼ìž</label>
 		    <div class="col-sm-4">
 		      ${product.manuDate }
 		    </div>
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">°¡°Ý</label>
+		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">ê°€ê²©</label>
 		    <div class="col-sm-4">
 		      ${product.price }
 		    </div>
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">µî·ÏÀÏÀÚ</label>
+		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">ë“±ë¡ì¼ìž</label>
 		    <div class="col-sm-4">
 		      ${product.regDate }
 		    </div>
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">±¸¸ÅÀÚ¾ÆÀÌµð</label>
+		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">êµ¬ë§¤ìžì•„ì´ë””</label>
 		    <div class="col-sm-4">
 		      <input type="text" name="userId" value="${user.userId }" class="form-control" disabled/>
 		    </div>
 		  </div>
 
 		  <div class="form-group">
-		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">±¸¸Å¹æ¹ý</label>
+		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">êµ¬ë§¤ë°©ë²•</label>
 		    <div class="col-sm-4">
 		     <select 	name="paymentOption"		class="form-control" >
-				<option value="1" selected="selected">Çö±Ý±¸¸Å</option>
-				<option value="2">½Å¿ë±¸¸Å</option>
+				<option value="1" selected="selected">í˜„ê¸ˆêµ¬ë§¤</option>
+				<option value="2">ì‹ ìš©êµ¬ë§¤</option>
 			</select>
 		    </div>
 		  </div>
 		  		  		  
 		  <div class="form-group">
-		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">¹Þ´Â»ç¶÷</label>
+		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">ë°›ëŠ”ì‚¬ëžŒ</label>
 		    <div class="col-sm-4">
 		      <input type="text" name="receiverName" 	class="form-control" value="${user.userName }" />
 		    </div>
 		  </div>		  		  		  
 		  		  		  
 		  <div class="form-group">
-		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">¹Þ´Â»ç¶÷ ¿¬¶ôÃ³</label>
+		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">ë°›ëŠ”ì‚¬ëžŒ ì—°ë½ì²˜</label>
 		    <div class="col-sm-4">
 		     <input 	type="text" name="receiverPhone" class="form-control" value="${user.phone }" />
 		    </div>
 		  </div>			  		  		  
 		  		  		  
 		  <div class="form-group">
-		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">¹è¼ÛÁö</label>
+		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">ë°°ì†¡ì§€</label>
 		    <div class="col-sm-4">
 		     <input 	type="text" name="divyAddr" class="form-control" value="${user.addr }" />
 		    </div>
 		  </div>			  		  		  
 		  		  		  
 		  <div class="form-group">
-		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">±¸¸Å¿äÃ»»çÇ×</label>
+		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">êµ¬ë§¤ìš”ì²­ì‚¬í•­</label>
 		    <div class="col-sm-4">
 		     <input		type="text" name="divyRequest" 	class="form-control"/>
 		    </div>
 		  </div>			  		  		  
 		  		  		  
 		  <div class="form-group">
-		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">¹è¼ÛÈñ¸ÁÀÏÀÚ</label>
+		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">ë°°ì†¡í¬ë§ì¼ìž</label>
 		    <div class="col-sm-4">
 		  		<input id="datepicker" type="text" class="form-control" name="divyDate">
 		    </div>
@@ -175,8 +175,8 @@
 		  
 		  <div class="form-group">
 		    <div class="col-sm-offset-4  col-sm-4 text-center">
-		      <button type="button" class="btn btn-primary" id="submitButton" >±¸ &nbsp;¸Å</button>
-			  <a class="btn btn-danger btn" href="#" role="button">Ãë &nbsp;¼Ò</a>
+		      <button type="button" class="btn btn-primary" id="submitButton" >êµ¬ &nbsp;ë§¤</button>
+			  <a class="btn btn-danger btn" href="#" role="button">ì·¨ &nbsp;ì†Œ</a>
 		    </div>
 		  </div>
 		</form>

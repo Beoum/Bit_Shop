@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
-<%@ page pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -8,7 +8,7 @@
 <html lang="ko">
 	
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
@@ -30,9 +30,9 @@
     
 	<script type="text/javascript">
 		
-		// È¸¿øÁ¤º¸¼öÁ¤ Event  Ã³¸® 	
+		// íšŒì›ì •ë³´ìˆ˜ì • Event  ì²˜ë¦¬ 	
 		 $(function() {
-			 $( "button:contains('È®ÀÎ')" ).on("click" , function() {
+			 $( "button:contains('í™•ì¸')" ).on("click" , function() {
 				 	location.href="/product/listProduct?currentPage=1&menu=search";
 			});
 		});
@@ -48,61 +48,61 @@
 	<div class="container">
 	
 		<div class="page-header">
-	       <h3 class=" text-info">±¸¸Å»ó¼¼Á¶È¸</h3>
-	       <h5 class="text-muted">¹è¼Û ½ÃÀÛ ÈÄ <strong class="text-danger">Á¤º¸ ¼öÁ¤ ºÒ°¡</strong></h5>
+	       <h3 class=" text-info">êµ¬ë§¤ìƒì„¸ì¡°íšŒ</h3>
+	       <h5 class="text-muted">ë°°ì†¡ ì‹œì‘ í›„ <strong class="text-danger">ì •ë³´ ìˆ˜ì • ë¶ˆê°€</strong></h5>
 	    </div>
 	
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2"><strong>¹°Ç°¹øÈ£</strong></div>
+	  		<div class="col-xs-4 col-md-2"><strong>ë¬¼í’ˆë²ˆí˜¸</strong></div>
 			<div class="col-xs-8 col-md-4">${purchase.purchaseProd.prodNo }</div>
 		</div>
 		
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>±¸¸ÅÀÚ ¾ÆÀÌµğ</strong></div>
+	  		<div class="col-xs-4 col-md-2 "><strong>êµ¬ë§¤ì ì•„ì´ë””</strong></div>
 			<div class="col-xs-8 col-md-4">${purchase.buyer.userId }</div>
 		</div>
 		
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>±¸¸Å¹æ¹ı</strong></div>
-			<div class="col-xs-8 col-md-4">${purchase.paymentOption.charAt(0)=='1'.charAt(0) ? "Çö±İ±¸¸Å":"½Å¿ë±¸¸Å" }</div>
+	  		<div class="col-xs-4 col-md-2 "><strong>êµ¬ë§¤ë°©ë²•</strong></div>
+			<div class="col-xs-8 col-md-4">${purchase.paymentOption.charAt(0)=='1'.charAt(0) ? "í˜„ê¸ˆêµ¬ë§¤":"ì‹ ìš©êµ¬ë§¤" }</div>
 		</div>
 		
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>¹Ş´Â»ç¶÷</strong></div>
+	  		<div class="col-xs-4 col-md-2 "><strong>ë°›ëŠ”ì‚¬ëŒ</strong></div>
 			<div class="col-xs-8 col-md-4">${purchase.receiverName }</div>
 		</div>
 		
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2"><strong>¹Ş´Â»ç¶÷¿¬¶ôÃ³</strong></div>
+	  		<div class="col-xs-4 col-md-2"><strong>ë°›ëŠ”ì‚¬ëŒì—°ë½ì²˜</strong></div>
 			<div class="col-xs-8 col-md-4">${purchase.receiverPhone }</div>
 		</div>
 		
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>¹è¼ÛÁö</strong></div>
+	  		<div class="col-xs-4 col-md-2 "><strong>ë°°ì†¡ì§€</strong></div>
 			<div class="col-xs-8 col-md-4">${purchase.divyAddr }</div>
 		</div>
 		
 		<hr/>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>±¸¸Å¿äÃ»»çÇ×</strong></div>
+	  		<div class="col-xs-4 col-md-2 "><strong>êµ¬ë§¤ìš”ì²­ì‚¬í•­</strong></div>
 			<div class="col-xs-8 col-md-4">${purchase.divyRequest }</div>
 		</div>
 		
 		<hr/>		
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2 "><strong>¹è¼ÛÈñ¸ÁÀÏ</strong></div>
+	  		<div class="col-xs-4 col-md-2 "><strong>ë°°ì†¡í¬ë§ì¼</strong></div>
 			<div class="col-xs-8 col-md-4">${purchase.divyDate }</div>
 		</div>
 		
@@ -113,7 +113,7 @@
  	
  	<div class="row">
 		<div class="col-md-12 text-center ">			
-			<button type="button" class="btn btn-danger">È®ÀÎ</button>
+			<button type="button" class="btn btn-danger">í™•ì¸</button>
   		</div>
 	</div>
 </body>
